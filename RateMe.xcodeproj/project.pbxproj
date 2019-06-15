@@ -3,14 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		AD193DDA4C466C0E67A3DA2F /* Pods_RateMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 499785B4E8111B6DD9A28818 /* Pods_RateMe.framework */; };
 		FF9A51BE22B1C56200614084 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF9A51BD22B1C56200614084 /* GoogleService-Info.plist */; };
+		FF9A51C022B1D4E500614084 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A51BF22B1D4E500614084 /* LoginViewController.swift */; };
+		FF9A51C222B1D50300614084 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A51C122B1D50300614084 /* RegisterViewController.swift */; };
+		FF9A51C722B1D79200614084 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF9A51C422B1D77300614084 /* Rubik-Bold.ttf */; };
+		FF9A51C822B1D79500614084 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF9A51C522B1D77300614084 /* Rubik-Light.ttf */; };
+		FF9A51C922B1D79700614084 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF9A51C622B1D77300614084 /* Rubik-Medium.ttf */; };
+		FF9A51CB22B1D7CA00614084 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFF76D1922B0919700836BA2 /* Info.plist */; };
 		FFF76D0E22B0919600836BA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF76D0D22B0919600836BA2 /* AppDelegate.swift */; };
-		FFF76D1022B0919600836BA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF76D0F22B0919600836BA2 /* ViewController.swift */; };
 		FFF76D1322B0919600836BA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF76D1122B0919600836BA2 /* Main.storyboard */; };
 		FFF76D1522B0919700836BA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF76D1422B0919700836BA2 /* Assets.xcassets */; };
 		FFF76D1822B0919700836BA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF76D1622B0919700836BA2 /* LaunchScreen.storyboard */; };
@@ -21,9 +26,13 @@
 		4075C248A5DC7DFC3B7BEDD2 /* Pods-RateMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMe.release.xcconfig"; path = "Target Support Files/Pods-RateMe/Pods-RateMe.release.xcconfig"; sourceTree = "<group>"; };
 		499785B4E8111B6DD9A28818 /* Pods_RateMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RateMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9A51BD22B1C56200614084 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FF9A51BF22B1D4E500614084 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FF9A51C122B1D50300614084 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		FF9A51C422B1D77300614084 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		FF9A51C522B1D77300614084 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
+		FF9A51C622B1D77300614084 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		FFF76D0A22B0919600836BA2 /* RateMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF76D0D22B0919600836BA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FFF76D0F22B0919600836BA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FFF76D1222B0919600836BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFF76D1422B0919700836BA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFF76D1722B0919700836BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,8 +65,17 @@
 				3160C497CC69B21D927C38D5 /* Pods-RateMe.debug.xcconfig */,
 				4075C248A5DC7DFC3B7BEDD2 /* Pods-RateMe.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FF9A51C322B1D70A00614084 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FF9A51C422B1D77300614084 /* Rubik-Bold.ttf */,
+				FF9A51C522B1D77300614084 /* Rubik-Light.ttf */,
+				FF9A51C622B1D77300614084 /* Rubik-Medium.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		FFF76D0122B0919600836BA2 = {
@@ -81,13 +99,15 @@
 		FFF76D0C22B0919600836BA2 /* RateMe */ = {
 			isa = PBXGroup;
 			children = (
+				FF9A51C322B1D70A00614084 /* Fonts */,
 				FFF76D0D22B0919600836BA2 /* AppDelegate.swift */,
-				FFF76D0F22B0919600836BA2 /* ViewController.swift */,
 				FFF76D1122B0919600836BA2 /* Main.storyboard */,
 				FFF76D1422B0919700836BA2 /* Assets.xcassets */,
 				FFF76D1622B0919700836BA2 /* LaunchScreen.storyboard */,
 				FFF76D1922B0919700836BA2 /* Info.plist */,
 				FF9A51BD22B1C56200614084 /* GoogleService-Info.plist */,
+				FF9A51BF22B1D4E500614084 /* LoginViewController.swift */,
+				FF9A51C122B1D50300614084 /* RegisterViewController.swift */,
 			);
 			path = RateMe;
 			sourceTree = "<group>";
@@ -130,7 +150,7 @@
 				};
 			};
 			buildConfigurationList = FFF76D0522B0919600836BA2 /* Build configuration list for PBXProject "RateMe" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -152,10 +172,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF9A51CB22B1D7CA00614084 /* Info.plist in Resources */,
 				FFF76D1822B0919700836BA2 /* LaunchScreen.storyboard in Resources */,
+				FF9A51C822B1D79500614084 /* Rubik-Light.ttf in Resources */,
 				FF9A51BE22B1C56200614084 /* GoogleService-Info.plist in Resources */,
 				FFF76D1522B0919700836BA2 /* Assets.xcassets in Resources */,
 				FFF76D1322B0919600836BA2 /* Main.storyboard in Resources */,
+				FF9A51C722B1D79200614084 /* Rubik-Bold.ttf in Resources */,
+				FF9A51C922B1D79700614084 /* Rubik-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +251,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFF76D1022B0919600836BA2 /* ViewController.swift in Sources */,
+				FF9A51C222B1D50300614084 /* RegisterViewController.swift in Sources */,
+				FF9A51C022B1D4E500614084 /* LoginViewController.swift in Sources */,
 				FFF76D0E22B0919600836BA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,7 +409,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = juanmanuelgago.RateMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -403,7 +428,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = juanmanuelgago.RateMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
