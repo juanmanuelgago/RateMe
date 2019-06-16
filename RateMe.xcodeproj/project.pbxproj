@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AD193DDA4C466C0E67A3DA2F /* Pods_RateMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 499785B4E8111B6DD9A28818 /* Pods_RateMe.framework */; };
+		FF2443B822B5A22200343ED0 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2443B722B5A22200343ED0 /* AuthenticationManager.swift */; };
+		FF2443BA22B5A47000343ED0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2443B922B5A47000343ED0 /* User.swift */; };
 		FF9A51BE22B1C56200614084 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF9A51BD22B1C56200614084 /* GoogleService-Info.plist */; };
 		FF9A51C022B1D4E500614084 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A51BF22B1D4E500614084 /* LoginViewController.swift */; };
 		FF9A51C222B1D50300614084 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A51C122B1D50300614084 /* RegisterViewController.swift */; };
@@ -25,6 +27,8 @@
 		3160C497CC69B21D927C38D5 /* Pods-RateMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMe.debug.xcconfig"; path = "Target Support Files/Pods-RateMe/Pods-RateMe.debug.xcconfig"; sourceTree = "<group>"; };
 		4075C248A5DC7DFC3B7BEDD2 /* Pods-RateMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMe.release.xcconfig"; path = "Target Support Files/Pods-RateMe/Pods-RateMe.release.xcconfig"; sourceTree = "<group>"; };
 		499785B4E8111B6DD9A28818 /* Pods_RateMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RateMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF2443B722B5A22200343ED0 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		FF2443B922B5A47000343ED0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FF9A51BD22B1C56200614084 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF9A51BF22B1D4E500614084 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FF9A51C122B1D50300614084 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 				FF9A51BD22B1C56200614084 /* GoogleService-Info.plist */,
 				FF9A51BF22B1D4E500614084 /* LoginViewController.swift */,
 				FF9A51C122B1D50300614084 /* RegisterViewController.swift */,
+				FF2443B722B5A22200343ED0 /* AuthenticationManager.swift */,
+				FF2443B922B5A47000343ED0 /* User.swift */,
 			);
 			path = RateMe;
 			sourceTree = "<group>";
@@ -252,7 +258,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF9A51C222B1D50300614084 /* RegisterViewController.swift in Sources */,
+				FF2443B822B5A22200343ED0 /* AuthenticationManager.swift in Sources */,
 				FF9A51C022B1D4E500614084 /* LoginViewController.swift in Sources */,
+				FF2443BA22B5A47000343ED0 /* User.swift in Sources */,
 				FFF76D0E22B0919600836BA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
