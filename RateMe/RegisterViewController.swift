@@ -81,13 +81,18 @@ class RegisterViewController: UIViewController {
                         self.showAlert(title: "Register error", message: "Unable to create user. Please, try again later.")
                         self.stopActivityIndicator()
                     } else {
-                        self.showAlert(title: "Successful creation", message: "You're now a user!")
-                        self.stopActivityIndicator()
+                        DatabaseManager.shared.createUser(user: newUser) { (response, error) in
+                            self.showAlert(title: "Success", message: "You're now a user.")
+                            self.stopActivityIndicator()
+                        }
                     }
                 }
+            } else {
+                showAlert(title: "Register error", message: "Passwords don't match. Try again.")
             }
+        } else {
+            showAlert(title: "Register error", message: "Please, fill all the requested fields on the form.")
         }
-        
     }
 
 }

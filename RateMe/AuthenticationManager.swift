@@ -12,6 +12,8 @@ import Firebase
 class AuthenticationManager {
     
     static var shared = AuthenticationManager()
+    
+    private init() { }
 
     func createUser(user: User, password: String, onCompletion: @escaping (Bool?, Error?) -> Void) {
         Auth.auth().createUser(withEmail: user.email, password: password) { (signUpResponse, error) in
@@ -26,6 +28,7 @@ class AuthenticationManager {
             
             
             guard let user = signUpResponse?.user else {
+                
                 return onCompletion(nil, error)
             }
             onCompletion(true, nil)
@@ -50,5 +53,21 @@ class AuthenticationManager {
         }
     }
     
+    func logout(onCompletion: @escaping (Bool?, Error?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            onCompletion(true, nil)
+        } catch let errorLogout {
+            onCompletion(nil, errorLogout)
+        }
+    }
+    
+    func isLoggedIn() -> Bool {
+        if Auth.auth().currentUser != nil {
+            return true
+        } else {
+            return false
+        }
+    }
     
 }

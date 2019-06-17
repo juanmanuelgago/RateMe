@@ -22,4 +22,18 @@ class User {
         self.email = email
     }
     
+    func getName() -> String {
+        let name = self.fullName.replacingOccurrences(of: " ", with: "")
+        return name.lowercased()
+    }
+    
+    func generateData() -> [String: Any] {
+        var simulatedJSON: [String: Any] = [:]
+        simulatedJSON["fullName"] = self.fullName
+        simulatedJSON["age"] = self.age
+        simulatedJSON["email"] = self.email
+        simulatedJSON["gender"] = self.gender
+        return simulatedJSON
+    }
+    
 }

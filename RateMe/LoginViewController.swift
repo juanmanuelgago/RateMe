@@ -22,6 +22,14 @@ class LoginViewController: UIViewController {
         applyCornerRadius()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if AuthenticationManager.shared.isLoggedIn() {
+            print("Hay un usuario conectado.")
+            performSegue(withIdentifier: "MainSegue1", sender: self)
+        }
+    }
+    
     func applyCornerRadius() {
         loginButton.layer.cornerRadius = 8
         emailTextField.layer.cornerRadius = 8
@@ -67,6 +75,8 @@ class LoginViewController: UIViewController {
                     self.stopActivityIndicator()
                 }
             }
+        } else {
+            showAlert(title: "Login error", message: "Please, fill all the requested fields to proceed.")
         }
     }
     

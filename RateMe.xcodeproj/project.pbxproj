@@ -17,10 +17,15 @@
 		FF9A51C822B1D79500614084 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF9A51C522B1D77300614084 /* Rubik-Light.ttf */; };
 		FF9A51C922B1D79700614084 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF9A51C622B1D77300614084 /* Rubik-Medium.ttf */; };
 		FF9A51CB22B1D7CA00614084 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFF76D1922B0919700836BA2 /* Info.plist */; };
+		FFC094B222B6BF2C00A3F178 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC094B122B6BF2C00A3F178 /* DashboardViewController.swift */; };
+		FFC094B422B6BF4300A3F178 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC094B322B6BF4300A3F178 /* GroupsViewController.swift */; };
+		FFC094B622B6C83700A3F178 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC094B522B6C83700A3F178 /* ProfileViewController.swift */; };
+		FFC094B822B6C87400A3F178 /* HistoricalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC094B722B6C87400A3F178 /* HistoricalViewController.swift */; };
 		FFF76D0E22B0919600836BA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF76D0D22B0919600836BA2 /* AppDelegate.swift */; };
 		FFF76D1322B0919600836BA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF76D1122B0919600836BA2 /* Main.storyboard */; };
 		FFF76D1522B0919700836BA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF76D1422B0919700836BA2 /* Assets.xcassets */; };
 		FFF76D1822B0919700836BA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF76D1622B0919700836BA2 /* LaunchScreen.storyboard */; };
+		FFFB8B0222B6FAB30088DE5F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB8B0122B6FAB30088DE5F /* DatabaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,12 +40,17 @@
 		FF9A51C422B1D77300614084 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		FF9A51C522B1D77300614084 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
 		FF9A51C622B1D77300614084 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
+		FFC094B122B6BF2C00A3F178 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		FFC094B322B6BF4300A3F178 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		FFC094B522B6C83700A3F178 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		FFC094B722B6C87400A3F178 /* HistoricalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalViewController.swift; sourceTree = "<group>"; };
 		FFF76D0A22B0919600836BA2 /* RateMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF76D0D22B0919600836BA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFF76D1222B0919600836BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFF76D1422B0919700836BA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFF76D1722B0919700836BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFF76D1922B0919700836BA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFFB8B0122B6FAB30088DE5F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +124,11 @@
 				FF9A51C122B1D50300614084 /* RegisterViewController.swift */,
 				FF2443B722B5A22200343ED0 /* AuthenticationManager.swift */,
 				FF2443B922B5A47000343ED0 /* User.swift */,
+				FFC094B122B6BF2C00A3F178 /* DashboardViewController.swift */,
+				FFC094B322B6BF4300A3F178 /* GroupsViewController.swift */,
+				FFC094B522B6C83700A3F178 /* ProfileViewController.swift */,
+				FFC094B722B6C87400A3F178 /* HistoricalViewController.swift */,
+				FFFB8B0122B6FAB30088DE5F /* DatabaseManager.swift */,
 			);
 			path = RateMe;
 			sourceTree = "<group>";
@@ -257,11 +272,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFC094B422B6BF4300A3F178 /* GroupsViewController.swift in Sources */,
 				FF9A51C222B1D50300614084 /* RegisterViewController.swift in Sources */,
+				FFFB8B0222B6FAB30088DE5F /* DatabaseManager.swift in Sources */,
+				FFC094B222B6BF2C00A3F178 /* DashboardViewController.swift in Sources */,
 				FF2443B822B5A22200343ED0 /* AuthenticationManager.swift in Sources */,
 				FF9A51C022B1D4E500614084 /* LoginViewController.swift in Sources */,
 				FF2443BA22B5A47000343ED0 /* User.swift in Sources */,
+				FFC094B622B6C83700A3F178 /* ProfileViewController.swift in Sources */,
 				FFF76D0E22B0919600836BA2 /* AppDelegate.swift in Sources */,
+				FFC094B822B6C87400A3F178 /* HistoricalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
