@@ -24,9 +24,12 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if AuthenticationManager.shared.isLoggedIn() {
-            print("Hay un usuario conectado.")
-            performSegue(withIdentifier: "MainSegue1", sender: self)
+//        if AuthenticationManager.shared.isLoggedIn() {
+//            print("Hay un usuario conectado.")
+//            performSegue(withIdentifier: "MainSegue1", sender: self)
+//        }
+        AuthenticationManager.shared.logout { (result, error) in
+            
         }
     }
     

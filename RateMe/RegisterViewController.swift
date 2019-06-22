@@ -82,8 +82,7 @@ class RegisterViewController: UIViewController {
                         self.stopActivityIndicator()
                     } else {
                         DatabaseManager.shared.createUser(user: newUser) { (response, error) in
-                            self.showAlert(title: "Success", message: "You're now a user.")
-                            self.stopActivityIndicator()
+                            self.performSegue(withIdentifier: "GroupSegue", sender: self)
                         }
                     }
                 }

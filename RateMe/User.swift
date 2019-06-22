@@ -10,29 +10,40 @@ import Foundation
 
 class User {
     
-    let fullName: String
-    let gender: String
-    let age: Int
-    let email: String
+    let fullName: String?
+    let gender: String?
+    let age: Int?
+    let email: String?
     
-    init(fullName: String, gender: String, age: Int, email: String) {
+    init(fullName: String?, gender: String?, age: Int?, email: String?) {
         self.fullName = fullName
         self.gender = gender
         self.age = age
         self.email = email
     }
     
+    init(userData: [String: Any]) {
+        self.fullName = userData["fullName"] as? String
+        self.gender = userData["gender"] as? String
+        self.age = userData["age"] as? Int
+        self.email = userData["email"] as? String
+     }
+    
     func getName() -> String {
-        let name = self.fullName.replacingOccurrences(of: " ", with: "")
-        return name.lowercased()
+        if let fullName = self.fullName as String? {
+            let name = fullName.replacingOccurrences(of: " ", with: "")
+            return name.lowercased()
+        } else {
+            return ""
+        }
     }
     
     func generateData() -> [String: Any] {
         var simulatedJSON: [String: Any] = [:]
-        simulatedJSON["fullName"] = self.fullName
-        simulatedJSON["age"] = self.age
-        simulatedJSON["email"] = self.email
-        simulatedJSON["gender"] = self.gender
+        simulatedJSON["fullName"] = self.fullName!
+        simulatedJSON["age"] = self.age!
+        simulatedJSON["email"] = self.email!
+        simulatedJSON["gender"] = self.gender!
         return simulatedJSON
     }
     
