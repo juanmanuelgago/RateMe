@@ -64,12 +64,6 @@ class RegisterViewController: UIViewController {
         }
     }
     
-    func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     @IBAction func didPressRegister(_ sender: Any) {
         // TODO: Validation of textfields values.
         if let name = fullNameTextField.text as String?, let age = ageTextField.text as String?, let email = emailTextField.text as String?, let password = passwordTextField.text as String?, let repeatedPassword = passwordTextField.text as String?, let gender = genderTextField.text as String? {
@@ -82,6 +76,7 @@ class RegisterViewController: UIViewController {
                         self.stopActivityIndicator()
                     } else {
                         DatabaseManager.shared.createUser(user: newUser) { (response, error) in
+                            AuthenticationManager.shared.loggedUser = newUser
                             self.performSegue(withIdentifier: "GroupSegue", sender: self)
                         }
                     }

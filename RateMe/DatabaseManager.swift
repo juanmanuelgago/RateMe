@@ -34,6 +34,40 @@ class DatabaseManager {
         }
     }
     
+    func getUser(onCompletion: @escaping (User?, Error?) -> Void) {
+        if let user = Auth.auth().currentUser, let email = user.email as String? {
+            db.collection("users").whereField("email", isEqualTo: email)
+                .getDocuments { (userDocuments, err) in
+                    if let err = err {
+                        onCompletion(nil, err)
+                    } else {
+                        if userDocuments!.count == 1 {
+                            let userData = userDocuments!.documents[0].data()
+                            let loggedUser = User(userData: userData)
+                            onCompletion(loggedUser, nil)
+                        }
+                    }
+            }
+        }
+    }
+    
+    func addUserToGroup(group: Group, onCompletion: @escaping (Bool?, Error?) -> Void) {
+        if let loggedUser = AuthenticationManager.shared.loggedUser as User? {
+            let documentName = loggedUser.getName()
+            let data = loggedUser.generateData()
+            let participantsRef = db.collection("groups").document(group.id).collection("participants")
+            participantsRef.document(documentName).setData(data) { err in
+                if let err = err {
+                    print("Error en la escritura")
+                    onCompletion(nil, err)
+                } else {
+                    print("Escritura exitosa")
+                    onCompletion(true, nil)
+                }
+            }
+        } 
+    }
+    
     func getGroups(onCompletion: @escaping ([Group]?, Error?) -> Void) {
         let groupsRef = db.collection("groups")
         var groups : [Group] = []
@@ -59,7 +93,7 @@ class DatabaseManager {
                                     onCompletion(nil, error)
                                 } else {
                                     usersArray = users!
-                                    let group = Group(name: document.data()["name"] as? String, participants: usersArray, reviewTypes: reviewTypesArray)
+                                    let group = Group(id: document.documentID, name: document.data()["name"] as? String, participants: usersArray, reviewTypes: reviewTypesArray)
                                     groups.append(group)
                                     if groupsDocs!.documents.count == finished {
                                         onCompletion(groups, nil)
@@ -75,7 +109,7 @@ class DatabaseManager {
         }
     }
     
-    func getReviewTypesFromGroup(reviewTypesReference: CollectionReference, onCompletionReviewTypes: @escaping ([ReviewType]?, Error?) -> Void)  {
+    private func getReviewTypesFromGroup(reviewTypesReference: CollectionReference, onCompletionReviewTypes: @escaping ([ReviewType]?, Error?) -> Void)  {
         var reviewTypes: [ReviewType] = []
         reviewTypesReference.getDocuments(completion: { (reviewTypesDocs, err) in
             if let err = err as Error? {
@@ -90,7 +124,7 @@ class DatabaseManager {
         })
     }
     
-    func getUsersFromGroup(usersReference: CollectionReference, onCompletionUsers: @escaping ([User]?, Error?) -> Void) {
+    private func getUsersFromGroup(usersReference: CollectionReference, onCompletionUsers: @escaping ([User]?, Error?) -> Void) {
         var users: [User] = []
         usersReference.getDocuments(completion: { (userDocs, err) in
             if let err = err as Error? {
@@ -104,7 +138,5 @@ class DatabaseManager {
             }
         })
     }
-    
-    
     
 }

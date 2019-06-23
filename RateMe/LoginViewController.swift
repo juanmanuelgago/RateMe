@@ -24,13 +24,19 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        if AuthenticationManager.shared.isLoggedIn() {
-//            print("Hay un usuario conectado.")
-//            performSegue(withIdentifier: "MainSegue1", sender: self)
-//        }
-        AuthenticationManager.shared.logout { (result, error) in
-            
+        if AuthenticationManager.shared.isLoggedIn() {
+            DatabaseManager.shared.getUser { (loggedUser, error) in
+                if let _ = error {
+                    AuthenticationManager.shared.loggedUser = nil
+                } else {
+                    if let loggedUser = loggedUser as User? {
+                        AuthenticationManager.shared.loggedUser = loggedUser
+                        self.performSegue(withIdentifier: "MainSegue1", sender: self)
+                    }
+                }
+            }
         }
+//        AuthenticationManager.shared.logout { (bo, err)  }
     }
     
     func applyCornerRadius() {
@@ -60,12 +66,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     @IBAction func didPressLogin(_ sender: Any) {
         if let email = emailTextField.text as String?, let password = passwordTextField.text as String? {
             startActivityIndicator()
@@ -74,12 +74,22 @@ class LoginViewController: UIViewController {
                     self.showAlert(title: "Login error", message: "Invalid credentials.")
                     self.stopActivityIndicator()
                 } else {
-                    self.showAlert(title: "Successful Login", message: "Valid credentials!!!")
-                    self.stopActivityIndicator()
+                    DatabaseManager.shared.getUser(onCompletion: { (user, error) in
+                        if let error = error {
+                            self.stopActivityIndicator()
+                            self.showAlert(title: "Login error", message: "There's been an error processing the information. Please, try again later.")
+                        } else {
+                            if let user = user as User? {
+                                AuthenticationManager.shared.loggedUser = user
+                                self.performSegue(withIdentifier: "MainSegue1", sender: self)
+                                self.stopActivityIndicator()
+                            }
+                        }
+                    })
                 }
             }
         } else {
-            showAlert(title: "Login error", message: "Please, fill all the requested fields to proceed.")
+            showAlert(title: "Login error", message: "Please, fill the requested fields to proceed.")
         }
     }
     

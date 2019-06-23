@@ -12,23 +12,13 @@ import Firebase
 class AuthenticationManager {
     
     static var shared = AuthenticationManager()
-    static var loggedUser: User?
+    var loggedUser: User?
     
     private init() { }
 
     func createUser(user: User, password: String, onCompletion: @escaping (Bool?, Error?) -> Void) {
         if let email = user.email as String? {
             Auth.auth().createUser(withEmail: email, password: password) { (signUpResponse, error) in
-                if signUpResponse != nil {
-                    print("Exitoso en Respuesta de SignUp")
-                    print(signUpResponse)
-                }
-                if error != nil {
-                    print("Error en Respuesta de SignUp")
-                    print(error)
-                }
-                
-                
                 guard let user = signUpResponse?.user else {
                     
                     return onCompletion(nil, error)
@@ -40,14 +30,6 @@ class AuthenticationManager {
     
     func login(email: String, password: String, onCompletion: @escaping (Any?, Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (loginResponse, error) in
-            if loginResponse != nil {
-                print("Exitoso en Respuesta de Login")
-                print(loginResponse)
-            }
-            if error != nil {
-                print("Error en Respuesta de Login")
-                print(error)
-            }
             
             guard let loggedUser = loginResponse?.user else {
                 return onCompletion(nil, error)
@@ -67,7 +49,6 @@ class AuthenticationManager {
     
     func isLoggedIn() -> Bool {
         if Auth.auth().currentUser != nil {
-            print(Auth.auth().currentUser?.email!)
             return true
         } else {
             return false

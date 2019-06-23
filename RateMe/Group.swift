@@ -10,11 +10,13 @@ import Foundation
 
 class Group {
     
+    let id: String
     let name: String?
     let participants: [User]?
     let reviewTypes: [ReviewType]?
     
-    init(name: String?, participants: [User]?, reviewTypes: [ReviewType]?) {
+    init(id: String, name: String?, participants: [User]?, reviewTypes: [ReviewType]?) {
+        self.id = id
         self.name = name
         self.participants = participants
         self.reviewTypes = reviewTypes
