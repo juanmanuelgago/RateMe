@@ -196,7 +196,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ds6-ZY-VvT">
-                                                    <rect key="frame" x="30" y="15" width="354" height="21.5"/>
+                                                    <rect key="frame" x="30" y="15" width="354" height="21"/>
                                                     <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik Medium" pointSize="18"/>
                                                     <color key="textColor" red="0.090196078430000007" green="0.69803921570000005" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -292,25 +292,135 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dashboard View Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzg-eU-SyK">
-                                <rect key="frame" x="104.5" y="418" width="205" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zpi-r4-BPe">
+                                <rect key="frame" x="0.0" y="196" width="414" height="617"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="ap0-kY-GZc">
+                                    <size key="itemSize" width="384" height="203"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="15" minY="15" maxX="15" maxY="15"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserCell" id="Cwb-jr-HxZ" customClass="UserCollectionViewCell" customModule="RateMe" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="15" width="384" height="203"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="203"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yeg-oT-gd4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="203"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zL-f5-RHl">
+                                                    <rect key="frame" x="20" y="135" width="354" height="53"/>
+                                                    <color key="backgroundColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik Medium" pointSize="19"/>
+                                                    <state key="normal" title="Review">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didPressReview:" destination="Cwb-jr-HxZ" eventType="touchUpInside" id="LLs-Ev-0q9"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Zwq-JI-Epz">
+                                                    <rect key="frame" x="264" y="15" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="GF5-3i-flo"/>
+                                                        <constraint firstAttribute="height" constant="100" id="YNK-qa-Iri"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lng-qd-y21">
+                                                    <rect key="frame" x="30" y="25" width="219" height="25"/>
+                                                    <fontDescription key="fontDescription" name="Rubik-Bold" family="Rubik" pointSize="21"/>
+                                                    <color key="textColor" red="0.090196078430000007" green="0.69803921570000005" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Rj-ph-QhL">
+                                                    <rect key="frame" x="30" y="57.5" width="219" height="20"/>
+                                                    <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="17"/>
+                                                    <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfW-H3-hka">
+                                                    <rect key="frame" x="30" y="82.5" width="219" height="20"/>
+                                                    <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="17"/>
+                                                    <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Yeg-oT-gd4" firstAttribute="leading" secondItem="Cwb-jr-HxZ" secondAttribute="leading" id="2Ey-Oy-SJy"/>
+                                            <constraint firstAttribute="trailing" secondItem="Yeg-oT-gd4" secondAttribute="trailing" id="6Af-oe-kgJ"/>
+                                            <constraint firstItem="Zwq-JI-Epz" firstAttribute="leading" secondItem="Lng-qd-y21" secondAttribute="trailing" constant="15" id="KQT-Uh-yH7"/>
+                                            <constraint firstItem="Zwq-JI-Epz" firstAttribute="top" secondItem="Cwb-jr-HxZ" secondAttribute="top" constant="15" id="LPD-tI-tvr"/>
+                                            <constraint firstItem="Lng-qd-y21" firstAttribute="top" secondItem="Zwq-JI-Epz" secondAttribute="top" constant="10" id="NtR-9r-wnt"/>
+                                            <constraint firstAttribute="bottom" secondItem="5zL-f5-RHl" secondAttribute="bottom" constant="15" id="Sum-qv-hwU"/>
+                                            <constraint firstItem="lfW-H3-hka" firstAttribute="leading" secondItem="6Rj-ph-QhL" secondAttribute="leading" id="WVF-wG-uWc"/>
+                                            <constraint firstItem="6Rj-ph-QhL" firstAttribute="leading" secondItem="Lng-qd-y21" secondAttribute="leading" id="ZCo-hD-oSe"/>
+                                            <constraint firstItem="Yeg-oT-gd4" firstAttribute="top" secondItem="Cwb-jr-HxZ" secondAttribute="top" id="b1V-Rs-f9u"/>
+                                            <constraint firstItem="5zL-f5-RHl" firstAttribute="leading" secondItem="Cwb-jr-HxZ" secondAttribute="leading" constant="20" id="b1l-0S-nxW"/>
+                                            <constraint firstItem="6Rj-ph-QhL" firstAttribute="trailing" secondItem="Lng-qd-y21" secondAttribute="trailing" id="cJG-1O-2pn"/>
+                                            <constraint firstItem="Zwq-JI-Epz" firstAttribute="trailing" secondItem="5zL-f5-RHl" secondAttribute="trailing" constant="-10" id="cpe-t9-WYg"/>
+                                            <constraint firstItem="lfW-H3-hka" firstAttribute="trailing" secondItem="6Rj-ph-QhL" secondAttribute="trailing" id="d5e-ey-c35"/>
+                                            <constraint firstItem="Lng-qd-y21" firstAttribute="leading" secondItem="5zL-f5-RHl" secondAttribute="leading" constant="10" id="hjZ-C7-8LQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="5zL-f5-RHl" secondAttribute="trailing" constant="20" id="iQd-Ou-02J"/>
+                                            <constraint firstItem="6Rj-ph-QhL" firstAttribute="top" secondItem="Lng-qd-y21" secondAttribute="bottom" constant="7.5" id="jPA-bU-NxB"/>
+                                            <constraint firstAttribute="bottom" secondItem="Yeg-oT-gd4" secondAttribute="bottom" id="luz-hk-DP6"/>
+                                            <constraint firstItem="5zL-f5-RHl" firstAttribute="top" secondItem="Zwq-JI-Epz" secondAttribute="bottom" constant="20" id="qxn-KN-85w"/>
+                                            <constraint firstItem="lfW-H3-hka" firstAttribute="top" secondItem="6Rj-ph-QhL" secondAttribute="bottom" constant="5" id="yYi-2W-QEs"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="ageLabel" destination="6Rj-ph-QhL" id="h6r-G4-m49"/>
+                                            <outlet property="cardView" destination="Yeg-oT-gd4" id="hFe-00-18Y"/>
+                                            <outlet property="genderLabel" destination="lfW-H3-hka" id="5jQ-FM-O93"/>
+                                            <outlet property="nameLabel" destination="Lng-qd-y21" id="mRb-gC-Xkr"/>
+                                            <outlet property="photoImage" destination="Zwq-JI-Epz" id="Was-jN-uEB"/>
+                                            <outlet property="reviewButton" destination="5zL-f5-RHl" id="9da-Tz-Pp2"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="k0d-zf-l04" id="uxP-H4-tqh"/>
+                                    <outlet property="delegate" destination="k0d-zf-l04" id="vt3-Ah-3bI"/>
+                                </connections>
+                            </collectionView>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="vOm-tn-CZ9">
+                                <rect key="frame" x="0.0" y="140" width="414" height="56"/>
+                                <color key="barTintColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jzg-eU-SyK" firstAttribute="centerX" secondItem="nIn-7e-QP7" secondAttribute="centerX" id="1DB-Pf-phF"/>
-                            <constraint firstItem="jzg-eU-SyK" firstAttribute="centerY" secondItem="nIn-7e-QP7" secondAttribute="centerY" id="Ki2-Sq-S0C"/>
+                            <constraint firstItem="vOm-tn-CZ9" firstAttribute="top" secondItem="nIn-7e-QP7" secondAttribute="top" id="0hv-sE-SGm"/>
+                            <constraint firstItem="vOm-tn-CZ9" firstAttribute="leading" secondItem="nIn-7e-QP7" secondAttribute="leading" id="8YC-lT-9Ju"/>
+                            <constraint firstItem="nIn-7e-QP7" firstAttribute="trailing" secondItem="vOm-tn-CZ9" secondAttribute="trailing" id="BaE-wd-NBs"/>
+                            <constraint firstItem="zpi-r4-BPe" firstAttribute="leading" secondItem="nIn-7e-QP7" secondAttribute="leading" id="SS1-UH-K5N"/>
+                            <constraint firstItem="nIn-7e-QP7" firstAttribute="bottom" secondItem="zpi-r4-BPe" secondAttribute="bottom" id="Tll-St-fev"/>
+                            <constraint firstItem="zpi-r4-BPe" firstAttribute="top" secondItem="vOm-tn-CZ9" secondAttribute="bottom" id="WU9-Ah-mzS"/>
+                            <constraint firstItem="nIn-7e-QP7" firstAttribute="trailing" secondItem="zpi-r4-BPe" secondAttribute="trailing" id="zm0-TZ-SHQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nIn-7e-QP7"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dashboard" id="ULi-Za-RxA"/>
+                    <navigationItem key="navigationItem" title="Dashboard" id="ZXG-sv-fNt">
+                        <barButtonItem key="rightBarButtonItem" title="Filters" style="done" id="rgH-a2-IYF">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="didPressFilters:" destination="k0d-zf-l04" id="omR-GY-R6W"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="filtersButton" destination="rgH-a2-IYF" id="dK6-6W-mif"/>
+                        <outlet property="userCollectionView" destination="zpi-r4-BPe" id="Wwo-Z4-7Y1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Pf-ix-pP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2341" y="1130"/>
+            <point key="canvasLocation" x="3256.521739130435" y="1129.6875"/>
         </scene>
         <!--Profile-->
         <scene sceneID="mod-Nc-4Uq">
@@ -321,7 +431,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile VIew Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhn-mr-CkB">
-                                <rect key="frame" x="121.5" y="418" width="171" height="21"/>
+                                <rect key="frame" x="121.5" y="466" width="171" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -334,11 +444,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uw0-4e-w31"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="Ndo-GZ-7TT"/>
+                    <navigationItem key="navigationItem" title="Profile" id="CKE-vU-Roi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gS-W1-PTu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2341" y="1857"/>
+            <point key="canvasLocation" x="1570" y="1858"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="4sV-iz-q4h">
@@ -481,7 +591,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Historical View Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5B-kD-klD">
-                                <rect key="frame" x="110.5" y="418" width="193" height="21"/>
+                                <rect key="frame" x="110.5" y="466" width="193" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -494,31 +604,108 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NEH-qC-C5H"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Reviews" id="wzP-Wf-QbE"/>
+                    <navigationItem key="navigationItem" title="My Reviews" id="xC6-eP-pAc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ph-B6-Txl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1570" y="1857"/>
+            <point key="canvasLocation" x="3257" y="1858"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="VFd-yc-rrH">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="oyG-I4-Zj8" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="oyG-I4-Zj8" customClass="MainTabBarController" customModule="RateMe" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L2Z-7I-dSQ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="k0d-zf-l04" kind="relationship" relationship="viewControllers" id="Zeq-E9-7sM"/>
-                        <segue destination="pav-8k-AWr" kind="relationship" relationship="viewControllers" id="hB3-Rf-rhj"/>
-                        <segue destination="RUG-VU-574" kind="relationship" relationship="viewControllers" id="I8X-ZG-Flo"/>
+                        <segue destination="iWc-7L-r5S" kind="relationship" relationship="viewControllers" id="XRK-Og-QQK"/>
+                        <segue destination="9mJ-K1-rX8" kind="relationship" relationship="viewControllers" id="aBj-Tn-AJg"/>
+                        <segue destination="KbR-oZ-Zjb" kind="relationship" relationship="viewControllers" id="BC5-sM-eVz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e88-a4-9LL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1570" y="1130"/>
+        </scene>
+        <!--Dashboard-->
+        <scene sceneID="qK6-Ny-Oya">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9mJ-K1-rX8" customClass="MainNavigationController" customModule="RateMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dashboard" id="ULi-Za-RxA"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="KOw-of-ax4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Rubik-Bold" family="Rubik" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Rubik-Bold" family="Rubik" pointSize="32"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="k0d-zf-l04" kind="relationship" relationship="rootViewController" id="mVQ-9z-Wtl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1jO-Bv-6FH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2493" y="1130"/>
+        </scene>
+        <!--My Reviews-->
+        <scene sceneID="mwh-hy-uHo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KbR-oZ-Zjb" customClass="MainNavigationController" customModule="RateMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Reviews" id="wzP-Wf-QbE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="WpJ-XD-VAm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Rubik-Bold" family="Rubik" pointSize="30"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RUG-VU-574" kind="relationship" relationship="rootViewController" id="Ret-J4-lit"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="awl-Qp-CTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2493" y="1858"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="0QE-CT-8C2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iWc-7L-r5S" customClass="MainNavigationController" customModule="RateMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" id="Ndo-GZ-7TT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="dpu-xY-bhX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Rubik-Bold" family="Rubik" pointSize="30"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pav-8k-AWr" kind="relationship" relationship="rootViewController" id="2B6-Hz-bpI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tfL-iA-0aE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="806" y="1858"/>
         </scene>
     </scenes>
     <resources>

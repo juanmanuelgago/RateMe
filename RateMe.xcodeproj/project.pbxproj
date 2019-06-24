@@ -13,6 +13,9 @@
 		FF5970AD22BAE380009E2334 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5970AC22BAE380009E2334 /* GroupsTableViewCell.swift */; };
 		FF5970AF22BAEE4F009E2334 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5970AE22BAEE4F009E2334 /* Group.swift */; };
 		FF5970B122BAEE94009E2334 /* ReviewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5970B022BAEE94009E2334 /* ReviewType.swift */; };
+		FF7C237322BFE046005A4F36 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C237222BFE046005A4F36 /* MainTabBarController.swift */; };
+		FF7C237522BFF39C005A4F36 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C237422BFF39C005A4F36 /* MainNavigationController.swift */; };
+		FF7C237722C0019A005A4F36 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C237622C0019A005A4F36 /* UserCollectionViewCell.swift */; };
 		FF9A51BE22B1C56200614084 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF9A51BD22B1C56200614084 /* GoogleService-Info.plist */; };
 		FF9A51C022B1D4E500614084 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A51BF22B1D4E500614084 /* LoginViewController.swift */; };
 		FF9A51C222B1D50300614084 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A51C122B1D50300614084 /* RegisterViewController.swift */; };
@@ -40,6 +43,9 @@
 		FF5970AC22BAE380009E2334 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		FF5970AE22BAEE4F009E2334 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		FF5970B022BAEE94009E2334 /* ReviewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewType.swift; sourceTree = "<group>"; };
+		FF7C237222BFE046005A4F36 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		FF7C237422BFF39C005A4F36 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		FF7C237622C0019A005A4F36 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF9A51BD22B1C56200614084 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF9A51BF22B1D4E500614084 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FF9A51C122B1D50300614084 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +115,8 @@
 				FFC094B322B6BF4300A3F178 /* GroupsViewController.swift */,
 				FFC094B522B6C83700A3F178 /* ProfileViewController.swift */,
 				FFC094B722B6C87400A3F178 /* HistoricalViewController.swift */,
+				FF7C237222BFE046005A4F36 /* MainTabBarController.swift */,
+				FF7C237422BFF39C005A4F36 /* MainNavigationController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -117,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				FF5970AC22BAE380009E2334 /* GroupsTableViewCell.swift */,
+				FF7C237622C0019A005A4F36 /* UserCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF7C237522BFF39C005A4F36 /* MainNavigationController.swift in Sources */,
 				FFC094B422B6BF4300A3F178 /* GroupsViewController.swift in Sources */,
 				FF9A51C222B1D50300614084 /* RegisterViewController.swift in Sources */,
 				FFFB8B0222B6FAB30088DE5F /* DatabaseManager.swift in Sources */,
@@ -323,7 +333,9 @@
 				FF2443BA22B5A47000343ED0 /* User.swift in Sources */,
 				FF5970AD22BAE380009E2334 /* GroupsTableViewCell.swift in Sources */,
 				FFC094B622B6C83700A3F178 /* ProfileViewController.swift in Sources */,
+				FF7C237322BFE046005A4F36 /* MainTabBarController.swift in Sources */,
 				FF5970B122BAEE94009E2334 /* ReviewType.swift in Sources */,
+				FF7C237722C0019A005A4F36 /* UserCollectionViewCell.swift in Sources */,
 				FFF76D0E22B0919600836BA2 /* AppDelegate.swift in Sources */,
 				FFC094B822B6C87400A3F178 /* HistoricalViewController.swift in Sources */,
 			);

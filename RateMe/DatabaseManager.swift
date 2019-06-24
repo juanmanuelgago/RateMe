@@ -109,6 +109,31 @@ class DatabaseManager {
         }
     }
     
+    func getGroupsOfUser(onCompletion: @escaping ([Group]?, Error?) -> Void) {
+        getGroups { (allGroups, error) in
+            if let error = error {
+                onCompletion(nil, error)
+            } else {
+                var groupsOfUser : [Group] = []
+                if let allGroups = allGroups as [Group]? {
+                    for group in allGroups {
+                        if let groupParticipants = group.participants as [User]? {
+                            for participant in groupParticipants {
+                                if let email = participant.email as String?, let loggedEmail = AuthenticationManager.shared.loggedUser?.email as String? {
+                                    if email == loggedEmail {
+                                        groupsOfUser.append(group)
+                                        break
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                onCompletion(groupsOfUser, nil)
+            }
+        }
+    }
+    
     private func getReviewTypesFromGroup(reviewTypesReference: CollectionReference, onCompletionReviewTypes: @escaping ([ReviewType]?, Error?) -> Void)  {
         var reviewTypes: [ReviewType] = []
         reviewTypesReference.getDocuments(completion: { (reviewTypesDocs, err) in
