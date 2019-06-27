@@ -421,6 +421,7 @@
                         <outlet property="searchBar" destination="vOm-tn-CZ9" id="rl6-3n-UdB"/>
                         <outlet property="userCollectionView" destination="zpi-r4-BPe" id="Wwo-Z4-7Y1"/>
                         <segue destination="Hzw-Hc-JSC" kind="presentation" identifier="FilterSegue" id="bte-2L-yXj"/>
+                        <segue destination="VlN-42-nzW" kind="show" identifier="ReviewSegue" id="3V1-FL-is1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Pf-ix-pP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -733,6 +734,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ph-B6-Txl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3257" y="1858"/>
+        </scene>
+        <!--Review View Controller-->
+        <scene sceneID="eWT-vG-Eh9">
+            <objects>
+                <viewController id="VlN-42-nzW" customClass="ReviewViewController" customModule="RateMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Wv-Wb-4go">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review View Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oo2-14-kC4">
+                                <rect key="frame" x="119" y="466" width="176" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oo2-14-kC4" firstAttribute="centerY" secondItem="PRM-EE-OoM" secondAttribute="centerY" id="MAD-8o-Myg"/>
+                            <constraint firstItem="oo2-14-kC4" firstAttribute="centerX" secondItem="PRM-EE-OoM" secondAttribute="centerX" id="RaV-Hs-Nix"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PRM-EE-OoM"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KB2-6u-wRL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4054" y="1858"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="VFd-yc-rrH">

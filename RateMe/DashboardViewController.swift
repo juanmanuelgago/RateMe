@@ -24,6 +24,10 @@ class DashboardViewController: UIViewController {
     var ageFromFilter: Int?
     var ageToFilter: Int?
     
+    // For the reviee process.
+    var selectedUser: User?
+    var selectedReviewType: ReviewType?
+    
     // Filter for the search bar.
     var searching = false
     // Filter for the custom filters
@@ -56,17 +60,29 @@ class DashboardViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // For the filters view controller.
-        let filtersViewController = segue.destination as! FiltersViewController
-        if let genderFilter = genderFilter as String? {
-            filtersViewController.gender = genderFilter
+        if segue.identifier == "FilterSegue" {
+            let filtersViewController = segue.destination as! FiltersViewController
+            if let genderFilter = genderFilter as String? {
+                filtersViewController.gender = genderFilter
+            }
+            if let ageFromFilter = ageFromFilter as Int? {
+                filtersViewController.fromAge = ageFromFilter
+            }
+            if let ageToFilter = ageToFilter as Int? {
+                filtersViewController.toAge = ageToFilter
+            }
+            filtersViewController.filterDelegate = self
         }
-        if let ageFromFilter = ageFromFilter as Int? {
-            filtersViewController.fromAge = ageFromFilter
+        if segue.identifier == "ReviewSegue" {
+            let reviewViewController = segue.destination as! ReviewViewController
+            if let selectedUser = selectedUser as User? {
+                reviewViewController.evaluatedUser = selectedUser
+            }
+            if let selectedReviewType = selectedReviewType as ReviewType? {
+                reviewViewController.reviewType = selectedReviewType
+            }
         }
-        if let ageToFilter = ageToFilter as Int? {
-            filtersViewController.toAge = ageToFilter
-        }
-        filtersViewController.filterDelegate = self
+        
     }
     
     func fillUserData(groups: [Group]) {
@@ -129,7 +145,57 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
 
 extension DashboardViewController: UserReviewDelegate {
     func didRequestToReview(cell: UICollectionViewCell) {
-        
+        // GET REVIEWS FOR THE GROUPS OF THE USER
+        // SHOW ACTION SHEET WITH OPTIONS
+        if let cellLocation = userCollectionView.indexPath(for: cell) as IndexPath? {
+            var userOfCell: User
+            if filtersFlag || searching {
+                userOfCell = filteredUsers[cellLocation.row]
+            } else {
+                userOfCell = users[cellLocation.row]
+            }
+            let groupsOfUser = checkSelectedUserGroup(userSelected: userOfCell)
+            let reviewTypesActionSheet = UIAlertController(title: nil, message: "Choose review", preferredStyle: .actionSheet)
+            for groupOfUser in groupsOfUser {
+                if let reviewTypes = groupOfUser.reviewTypes as [ReviewType]? {
+                    for reviewType in reviewTypes {
+                        if let name = reviewType.name as String? {
+                            let review = UIAlertAction(title: name, style: .default) { (_) in
+                                let index = reviewTypes.firstIndex(where: { (type: ReviewType) -> Bool in
+                                    type.name == name
+                                })
+                                if let index = index as Int? {
+                                    self.selectedReviewType = reviewTypes[index]
+                                    self.selectedUser = userOfCell
+                                    self.performSegue(withIdentifier: "ReviewSegue", sender: self)
+                                }
+                            }
+                            reviewTypesActionSheet.addAction(review)
+                        }
+                    }
+                }
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+            reviewTypesActionSheet.addAction(cancelAction)
+            self.present(reviewTypesActionSheet, animated: true, completion: nil)
+        }
+    }
+    
+    func checkSelectedUserGroup(userSelected: User) -> [Group] {
+        var groupsOfUser: [Group] = []
+        if let groups = groups as [Group]? {
+            for group in groups {
+                if let participants = group.participants as [User]? {
+                    for participant in participants {
+                        if participant.email == userSelected.email {
+                            groupsOfUser.append(group)
+                            break
+                        }
+                    }
+                }
+            }
+        }
+        return groupsOfUser
     }
 }
 
