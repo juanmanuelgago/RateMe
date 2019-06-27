@@ -34,7 +34,6 @@ class UserCollectionViewCell: UICollectionViewCell {
     }
     
     func styleCardView() {
-        print("ACA!")
         cardView.layer.backgroundColor = UIColor(red: 250.0, green: 250.0, blue: 250.0, alpha: 1.0).cgColor
         cardView.layer.cornerRadius = 10
         cardView.layer.shadowOpacity = 0.75

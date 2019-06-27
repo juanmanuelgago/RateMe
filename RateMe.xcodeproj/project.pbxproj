@@ -16,6 +16,7 @@
 		FF7C237322BFE046005A4F36 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C237222BFE046005A4F36 /* MainTabBarController.swift */; };
 		FF7C237522BFF39C005A4F36 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C237422BFF39C005A4F36 /* MainNavigationController.swift */; };
 		FF7C237722C0019A005A4F36 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C237622C0019A005A4F36 /* UserCollectionViewCell.swift */; };
+		FF7C237922C04D6A005A4F36 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C237822C04D6A005A4F36 /* FiltersViewController.swift */; };
 		FF9A51BE22B1C56200614084 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF9A51BD22B1C56200614084 /* GoogleService-Info.plist */; };
 		FF9A51C022B1D4E500614084 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A51BF22B1D4E500614084 /* LoginViewController.swift */; };
 		FF9A51C222B1D50300614084 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A51C122B1D50300614084 /* RegisterViewController.swift */; };
@@ -46,6 +47,7 @@
 		FF7C237222BFE046005A4F36 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		FF7C237422BFF39C005A4F36 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		FF7C237622C0019A005A4F36 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
+		FF7C237822C04D6A005A4F36 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		FF9A51BD22B1C56200614084 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF9A51BF22B1D4E500614084 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FF9A51C122B1D50300614084 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				FFC094B722B6C87400A3F178 /* HistoricalViewController.swift */,
 				FF7C237222BFE046005A4F36 /* MainTabBarController.swift */,
 				FF7C237422BFF39C005A4F36 /* MainNavigationController.swift */,
+				FF7C237822C04D6A005A4F36 /* FiltersViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				FF7C237722C0019A005A4F36 /* UserCollectionViewCell.swift in Sources */,
 				FFF76D0E22B0919600836BA2 /* AppDelegate.swift in Sources */,
 				FFC094B822B6C87400A3F178 /* HistoricalViewController.swift in Sources */,
+				FF7C237922C04D6A005A4F36 /* FiltersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@ class DashboardViewController: UIViewController {
     
     @IBOutlet weak var userCollectionView: UICollectionView!
     @IBOutlet weak var filtersButton: UIBarButtonItem!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var users: [User] = []
     var filteredUsers: [User] = []
@@ -19,13 +20,14 @@ class DashboardViewController: UIViewController {
     var groups: [Group]?
     
     // Filter values for the array of users.
-    var genderFilter = "both"
-    var ageFromFilter = 15
-    var ageToFilter = 80
-    var groupFilter = "all"
+    var genderFilter: String?
+    var ageFromFilter: Int?
+    var ageToFilter: Int?
     
     // Filter for the search bar.
     var searching = false
+    // Filter for the custom filters
+    var filtersFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,6 @@ class DashboardViewController: UIViewController {
             userCollectionView.reloadData()
         } else {
             DatabaseManager.shared.getGroupsOfUser { (groupsOfUser, error) in
-                print("Entro en la respuesta del getGroups")
                 if let _ = error {
                     self.showAlert(title: "Unexpected error", message: "Try again later.")
                 } else {
@@ -51,6 +52,21 @@ class DashboardViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // For the filters view controller.
+        let filtersViewController = segue.destination as! FiltersViewController
+        if let genderFilter = genderFilter as String? {
+            filtersViewController.gender = genderFilter
+        }
+        if let ageFromFilter = ageFromFilter as Int? {
+            filtersViewController.fromAge = ageFromFilter
+        }
+        if let ageToFilter = ageToFilter as Int? {
+            filtersViewController.toAge = ageToFilter
+        }
+        filtersViewController.filterDelegate = self
     }
     
     func fillUserData(groups: [Group]) {
@@ -75,19 +91,31 @@ class DashboardViewController: UIViewController {
     }
     
     @IBAction func didPressFilters(_ sender: Any) {
+        searchBar.text = ""
+        searching = false
+        performSegue(withIdentifier: "FilterSegue", sender: self)
     }
 }
 
 extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return users.count
+        if filtersFlag || searching {
+            return filteredUsers.count
+        } else {
+            return users.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = "UserCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! UserCollectionViewCell
-        let user = users[indexPath.row]
+        var user: User
+        if filtersFlag || searching {
+            user = filteredUsers[indexPath.row]
+        } else {
+            user = users[indexPath.row]
+        }
         cell.userReviewDelegate = self
         cell.setData(user: user)
         return cell
@@ -103,7 +131,135 @@ extension DashboardViewController: UserReviewDelegate {
     func didRequestToReview(cell: UICollectionViewCell) {
         
     }
+}
+
+extension DashboardViewController: UISearchBarDelegate, UIScrollViewDelegate {
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count > 0 {
+            if filtersFlag {
+                applyFilters()
+                filteredUsers = filteredUsers.filter({ (user: User) -> Bool in
+                    if let name = user.fullName?.lowercased() as String? {
+                        return name.contains(searchText.lowercased())
+                    } else {
+                        return false
+                    }
+                })
+                searching = true
+            } else {
+                filteredUsers = users.filter({ (user: User) -> Bool in
+                    if let name = user.fullName?.lowercased() as String? {
+                        return name.contains(searchText.lowercased())
+                    } else {
+                        return false
+                    }
+                })
+                searching = true
+            }
+        } else {
+            searching = false
+            applyFilters()
+        }
+        userCollectionView.reloadData()
+    }
+    
+    // Dismisses the keyboard if the search button is pressed.
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    
+    // Dismiss the keyboard when the view is scrolling.
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
+    }
+}
+
+extension DashboardViewController: FilterDelegate {
+    
+    func setFilters(gender: String?, fromAge: Int?, toAge: Int?) {
+        var isApplyingFilters = false
+        genderFilter = gender
+        ageFromFilter = fromAge
+        ageToFilter = toAge
+        if let _ = gender as String? {
+            print("gender esta como filtro!")
+            isApplyingFilters = true
+        }
+        if let _ = fromAge as Int? {
+            print("age from está como filtro!")
+            isApplyingFilters = true
+        }
+        if let _ = toAge as Int? {
+            print("age to está como filtro!")
+            isApplyingFilters = true
+        }
+        filtersFlag = isApplyingFilters
+        print("flag? \(filtersFlag)" )
+        print("---")
+        applyFilters()
+    }
+    
+    func applyFilters() {
+        filteredUsers = []
+        //Filtering for age
+        filteredUsers = users.filter { (user: User) -> Bool in
+            if let higherAge = self.ageToFilter as Int?, let lowerAge = self.ageFromFilter as Int? {
+                if let comparisonAge = user.age as Int? {
+                    if comparisonAge >= lowerAge && comparisonAge <= higherAge {
+                        return true
+                    } else {
+                        return false
+                    }
+                } else {
+                    return true
+                }
+            } else {
+                if self.ageFromFilter == nil && self.ageToFilter == nil {
+                    return true
+                } else {
+                    if self.ageFromFilter != nil {
+                        if let comparisonAge = user.age as Int? {
+                            if comparisonAge >= self.ageFromFilter! {
+                                return true
+                            } else {
+                                return false
+                            }
+                        } else {
+                            return true
+                        }
+                    } else {
+                        if let comparisonAge = user.age as Int? {
+                            if comparisonAge <= self.ageToFilter! {
+                                return true
+                            } else {
+                                return false
+                            }
+                        } else {
+                            return true
+                        }
+                    }
+                }
+            }
+        }
+        //Filtering for gender
+        filteredUsers = filteredUsers.filter { (user: User) -> Bool in
+            if let gender = self.genderFilter as String? {
+                if let comparisonGender = user.gender as String? {
+                    if comparisonGender == gender {
+                        return true
+                    } else {
+                        return false
+                    }
+                } else {
+                    return false
+                }
+            } else {
+                return true
+            }
+        }
+        userCollectionView.reloadData()
+    }
     
 }
 

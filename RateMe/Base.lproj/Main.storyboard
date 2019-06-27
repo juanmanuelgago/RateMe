@@ -310,11 +310,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yeg-oT-gd4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="203"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="203"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zL-f5-RHl">
-                                                    <rect key="frame" x="20" y="135" width="354" height="53"/>
+                                                    <rect key="frame" x="20" y="135" width="344" height="53"/>
                                                     <color key="backgroundColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik Medium" pointSize="19"/>
                                                     <state key="normal" title="Review">
@@ -325,26 +325,26 @@
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Zwq-JI-Epz">
-                                                    <rect key="frame" x="264" y="15" width="100" height="100"/>
+                                                    <rect key="frame" x="254" y="15" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="GF5-3i-flo"/>
                                                         <constraint firstAttribute="height" constant="100" id="YNK-qa-Iri"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lng-qd-y21">
-                                                    <rect key="frame" x="30" y="25" width="219" height="25"/>
+                                                    <rect key="frame" x="30" y="25" width="209" height="25"/>
                                                     <fontDescription key="fontDescription" name="Rubik-Bold" family="Rubik" pointSize="21"/>
                                                     <color key="textColor" red="0.090196078430000007" green="0.69803921570000005" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Rj-ph-QhL">
-                                                    <rect key="frame" x="30" y="57.5" width="219" height="20"/>
+                                                    <rect key="frame" x="30" y="57.5" width="209" height="20"/>
                                                     <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="17"/>
                                                     <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfW-H3-hka">
-                                                    <rect key="frame" x="30" y="82.5" width="219" height="20"/>
+                                                    <rect key="frame" x="30" y="82.5" width="209" height="20"/>
                                                     <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="17"/>
                                                     <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -391,6 +391,9 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="56"/>
                                 <color key="barTintColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="k0d-zf-l04" id="Y8C-6Z-bhB"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -415,12 +418,133 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filtersButton" destination="rgH-a2-IYF" id="dK6-6W-mif"/>
+                        <outlet property="searchBar" destination="vOm-tn-CZ9" id="rl6-3n-UdB"/>
                         <outlet property="userCollectionView" destination="zpi-r4-BPe" id="Wwo-Z4-7Y1"/>
+                        <segue destination="Hzw-Hc-JSC" kind="presentation" identifier="FilterSegue" id="bte-2L-yXj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Pf-ix-pP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3256.521739130435" y="1129.6875"/>
+        </scene>
+        <!--Filters View Controller-->
+        <scene sceneID="vst-Ns-VED">
+            <objects>
+                <viewController id="Hzw-Hc-JSC" customClass="FiltersViewController" customModule="RateMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8zG-D0-u9K">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZTi-mf-xq2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                                <color key="barTintColor" red="0.090196078430000007" green="0.69803921570000005" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="Rubik-Bold" family="Rubik" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <textAttributes key="largeTitleTextAttributes">
+                                    <fontDescription key="fontDescription" name="Rubik-Bold" family="Rubik" pointSize="32"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Filters" id="2CF-vX-ULl">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Yum-TI-9Mj">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="didPressCancel:" destination="Hzw-Hc-JSC" id="xhq-r5-H6p"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXZ-zs-LDG">
+                                <rect key="frame" x="30" y="170" width="354" height="31"/>
+                                <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="26"/>
+                                <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amt-JZ-mfR">
+                                <rect key="frame" x="30" y="296" width="354" height="31"/>
+                                <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="26"/>
+                                <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gender" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0D0-Vf-VX8" customClass="CustomInputTextField" customModule="RateMe" customModuleProvider="target">
+                                <rect key="frame" x="30" y="216" width="354" height="50"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hq-ll-KdZ">
+                                <rect key="frame" x="30" y="762" width="354" height="50"/>
+                                <color key="backgroundColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="v0J-RR-lzg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik Medium" pointSize="19"/>
+                                <state key="normal" title="Apply">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressApply:" destination="Hzw-Hc-JSC" eventType="touchUpInside" id="WKV-ji-hSO"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSE-gh-535" customClass="CustomInputTextField" customModule="RateMe" customModuleProvider="target">
+                                <rect key="frame" x="30" y="342" width="159.5" height="50"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="To" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ta0-jV-ahD" customClass="CustomInputTextField" customModule="RateMe" customModuleProvider="target">
+                                <rect key="frame" x="224.5" y="342" width="159.5" height="50"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0D0-Vf-VX8" firstAttribute="height" secondItem="7hq-ll-KdZ" secondAttribute="height" id="2us-XF-cn6"/>
+                            <constraint firstItem="0D0-Vf-VX8" firstAttribute="leading" secondItem="JXZ-zs-LDG" secondAttribute="leading" id="4eA-T9-WWb"/>
+                            <constraint firstItem="ta0-jV-ahD" firstAttribute="width" secondItem="7hq-ll-KdZ" secondAttribute="width" multiplier="0.45" id="56d-I3-ESp"/>
+                            <constraint firstItem="7hq-ll-KdZ" firstAttribute="trailing" secondItem="JXZ-zs-LDG" secondAttribute="trailing" id="5Kh-56-sKQ"/>
+                            <constraint firstItem="JXZ-zs-LDG" firstAttribute="top" secondItem="ZTi-mf-xq2" secondAttribute="bottom" constant="30" id="65Y-oO-SXK"/>
+                            <constraint firstItem="ZTi-mf-xq2" firstAttribute="top" secondItem="mTb-qm-fi2" secondAttribute="top" id="8I5-GF-HKZ"/>
+                            <constraint firstItem="JXZ-zs-LDG" firstAttribute="leading" secondItem="mTb-qm-fi2" secondAttribute="leading" constant="30" id="9YW-DQ-aAz"/>
+                            <constraint firstItem="mTb-qm-fi2" firstAttribute="bottom" secondItem="7hq-ll-KdZ" secondAttribute="bottom" constant="50" id="BI7-XG-HHm"/>
+                            <constraint firstItem="gSE-gh-535" firstAttribute="height" secondItem="7hq-ll-KdZ" secondAttribute="height" id="EtK-EU-d4f"/>
+                            <constraint firstItem="0D0-Vf-VX8" firstAttribute="trailing" secondItem="JXZ-zs-LDG" secondAttribute="trailing" id="Ful-11-iZn"/>
+                            <constraint firstItem="mTb-qm-fi2" firstAttribute="trailing" secondItem="JXZ-zs-LDG" secondAttribute="trailing" constant="30" id="IV2-ud-oAZ"/>
+                            <constraint firstItem="ZTi-mf-xq2" firstAttribute="leading" secondItem="mTb-qm-fi2" secondAttribute="leading" id="QDw-ph-ULI"/>
+                            <constraint firstItem="ta0-jV-ahD" firstAttribute="trailing" secondItem="JXZ-zs-LDG" secondAttribute="trailing" id="SI2-jC-LTE"/>
+                            <constraint firstItem="7hq-ll-KdZ" firstAttribute="leading" secondItem="JXZ-zs-LDG" secondAttribute="leading" id="VnV-PL-Y1N"/>
+                            <constraint firstItem="gSE-gh-535" firstAttribute="width" secondItem="7hq-ll-KdZ" secondAttribute="width" multiplier="0.45" id="XNY-4v-dcJ"/>
+                            <constraint firstItem="Amt-JZ-mfR" firstAttribute="top" secondItem="0D0-Vf-VX8" secondAttribute="bottom" constant="30" id="Xz2-PG-Nkg"/>
+                            <constraint firstItem="ta0-jV-ahD" firstAttribute="top" secondItem="Amt-JZ-mfR" secondAttribute="bottom" constant="15" id="YfH-4x-fii"/>
+                            <constraint firstItem="Amt-JZ-mfR" firstAttribute="trailing" secondItem="JXZ-zs-LDG" secondAttribute="trailing" id="Zqw-gg-Nhr"/>
+                            <constraint firstItem="Amt-JZ-mfR" firstAttribute="leading" secondItem="JXZ-zs-LDG" secondAttribute="leading" id="a63-6x-fmS"/>
+                            <constraint firstItem="gSE-gh-535" firstAttribute="top" secondItem="Amt-JZ-mfR" secondAttribute="bottom" constant="15" id="mUz-eb-9qA"/>
+                            <constraint firstItem="0D0-Vf-VX8" firstAttribute="top" secondItem="JXZ-zs-LDG" secondAttribute="bottom" constant="15" id="pCu-jT-BiM"/>
+                            <constraint firstItem="gSE-gh-535" firstAttribute="leading" secondItem="JXZ-zs-LDG" secondAttribute="leading" id="t28-tb-Fg8"/>
+                            <constraint firstItem="mTb-qm-fi2" firstAttribute="trailing" secondItem="ZTi-mf-xq2" secondAttribute="trailing" id="vjY-if-9Ca"/>
+                            <constraint firstItem="ta0-jV-ahD" firstAttribute="height" secondItem="7hq-ll-KdZ" secondAttribute="height" id="y8A-6q-u3o"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mTb-qm-fi2"/>
+                    </view>
+                    <connections>
+                        <outlet property="applyButton" destination="7hq-ll-KdZ" id="Gso-Fl-1vR"/>
+                        <outlet property="cancelButton" destination="Yum-TI-9Mj" id="Y9a-kO-y6t"/>
+                        <outlet property="fromAgeLabel" destination="gSE-gh-535" id="oe2-yi-cqK"/>
+                        <outlet property="genderLabel" destination="0D0-Vf-VX8" id="9P2-z6-UqG"/>
+                        <outlet property="toAgeLabel" destination="ta0-jV-ahD" id="cba-cS-34m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4q-y4-4QP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4053.6231884057975" y="1129.6875"/>
         </scene>
         <!--Profile-->
         <scene sceneID="mod-Nc-4Uq">
@@ -712,6 +836,6 @@
         <image name="avatar" width="477" height="477"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UUC-yI-67G"/>
+        <segue reference="dQe-e1-LXC"/>
     </inferredMetricsTieBreakers>
 </document>
