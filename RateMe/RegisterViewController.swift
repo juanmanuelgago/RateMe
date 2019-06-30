@@ -10,6 +10,8 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var profilePhotoImage: UIImageView!
     @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var genderTextField: UITextField!
@@ -41,6 +43,7 @@ class RegisterViewController: UIViewController {
         ageTextField.layer.cornerRadius = 8
         repeatedPasswordTextField.layer.cornerRadius = 8
         passwordTextField.layer.cornerRadius = 8
+        genderTextField.layer.cornerRadius = 8
     }
     
     func startActivityIndicator() {
@@ -90,3 +93,22 @@ class RegisterViewController: UIViewController {
     }
 
 }
+
+extension RegisterViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        repeatedPasswordTextField.resignFirstResponder()
+        ageTextField.resignFirstResponder()
+        fullNameTextField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+}
+
+

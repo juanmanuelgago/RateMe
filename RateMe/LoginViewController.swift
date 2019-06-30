@@ -36,7 +36,6 @@ class LoginViewController: UIViewController {
                 }
             }
         }
-//        AuthenticationManager.shared.logout { (bo, err)  }
     }
     
     func applyCornerRadius() {
@@ -96,5 +95,19 @@ class LoginViewController: UIViewController {
     @IBAction func didPressSignUp(_ sender: Any) {
         performSegue(withIdentifier: "RegisterSegue", sender: self)
     }
-
 }
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+}
+

@@ -72,3 +72,19 @@ class FiltersViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 }
+
+extension FiltersViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        toAgeLabel.resignFirstResponder()
+        fromAgeLabel.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+}
+
+
