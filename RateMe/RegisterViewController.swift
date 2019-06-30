@@ -22,11 +22,14 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
     
     var activityIndicator = UIActivityIndicatorView()
+    var picker = UIPickerView()
+    let genderOptions = ["Male", "Female"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         applyCornerRadius()
         applyRoundedImage()
+        assignPickerToTextField()
     }
     
     func applyRoundedImage() {
@@ -65,6 +68,12 @@ class RegisterViewController: UIViewController {
         if let viewTag = self.view.viewWithTag(101) {
             viewTag.removeFromSuperview()
         }
+    }
+    
+    func assignPickerToTextField() {
+        picker.delegate = self
+        picker.dataSource = self
+        genderTextField.inputView = picker
     }
     
     @IBAction func didPressRegister(_ sender: Any) {
@@ -109,6 +118,25 @@ extension RegisterViewController: UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+}
+
+extension RegisterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return genderOptions.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        genderTextField.text = genderOptions[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return genderOptions[row]
+    }
 }
 
 

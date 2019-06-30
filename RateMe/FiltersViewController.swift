@@ -25,15 +25,30 @@ class FiltersViewController: UIViewController {
     var gender: String?
     var fromAge: Int?
     var toAge: Int?
+    
+    var picker = UIPickerView()
+    let genderOptions = ["", "Female", "Male"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         applyCornerRadius()
+        assignPickerToTextField()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         showActualFilters()
+    }
+    
+    func assignPickerToTextField() {
+        picker.delegate = self
+        picker.dataSource = self
+        genderLabel.inputView = picker
+        if let gender = gender as String? {
+            if let row = genderOptions.index(of: gender) {
+                picker.selectRow(row, inComponent: 0, animated: false)
+            }
+        }
     }
     
     func applyCornerRadius() {
@@ -85,6 +100,25 @@ extension FiltersViewController: UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+}
+
+extension FiltersViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return genderOptions.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        genderLabel.text = genderOptions[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return genderOptions[row]
+    }
 }
 
 
