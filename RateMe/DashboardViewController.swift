@@ -75,11 +75,8 @@ class DashboardViewController: UIViewController {
         }
         if segue.identifier == "ReviewSegue" {
             let reviewViewController = segue.destination as! ReviewViewController
-            if let selectedUser = selectedUser as User? {
-                reviewViewController.evaluatedUser = selectedUser
-            }
-            if let selectedReviewType = selectedReviewType as ReviewType? {
-                reviewViewController.reviewType = selectedReviewType
+            if let selectedUser = selectedUser as User?, let selectedReviewType = selectedReviewType as ReviewType?, let loggedUser = AuthenticationManager.shared.loggedUser as User? {
+                reviewViewController.newReview = Review(userTo: selectedUser, reviewType: selectedReviewType, isAnonymous: true)
             }
         }
         

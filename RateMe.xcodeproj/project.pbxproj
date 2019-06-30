@@ -29,6 +29,9 @@
 		FFC094B422B6BF4300A3F178 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC094B322B6BF4300A3F178 /* GroupsViewController.swift */; };
 		FFC094B622B6C83700A3F178 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC094B522B6C83700A3F178 /* ProfileViewController.swift */; };
 		FFC094B822B6C87400A3F178 /* HistoricalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC094B722B6C87400A3F178 /* HistoricalViewController.swift */; };
+		FFC8D18622C8323D00A7B958 /* ReviewSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8D18522C8323D00A7B958 /* ReviewSlider.swift */; };
+		FFC8D18822C83F3500A7B958 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8D18722C83F3500A7B958 /* InputTextField.swift */; };
+		FFF2E0C822C7E3260097BE7F /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2E0C722C7E3260097BE7F /* Review.swift */; };
 		FFF76D0E22B0919600836BA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF76D0D22B0919600836BA2 /* AppDelegate.swift */; };
 		FFF76D1322B0919600836BA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF76D1122B0919600836BA2 /* Main.storyboard */; };
 		FFF76D1522B0919700836BA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF76D1422B0919700836BA2 /* Assets.xcassets */; };
@@ -60,6 +63,9 @@
 		FFC094B322B6BF4300A3F178 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		FFC094B522B6C83700A3F178 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FFC094B722B6C87400A3F178 /* HistoricalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalViewController.swift; sourceTree = "<group>"; };
+		FFC8D18522C8323D00A7B958 /* ReviewSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSlider.swift; sourceTree = "<group>"; };
+		FFC8D18722C83F3500A7B958 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		FFF2E0C722C7E3260097BE7F /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		FFF76D0A22B0919600836BA2 /* RateMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF76D0D22B0919600836BA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFF76D1222B0919600836BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +112,7 @@
 				FFFB8B0122B6FAB30088DE5F /* DatabaseManager.swift */,
 				FF5970AE22BAEE4F009E2334 /* Group.swift */,
 				FF5970B022BAEE94009E2334 /* ReviewType.swift */,
+				FFF2E0C722C7E3260097BE7F /* Review.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -132,6 +139,8 @@
 			children = (
 				FF5970AC22BAE380009E2334 /* GroupsTableViewCell.swift */,
 				FF7C237622C0019A005A4F36 /* UserCollectionViewCell.swift */,
+				FFC8D18522C8323D00A7B958 /* ReviewSlider.swift */,
+				FFC8D18722C83F3500A7B958 /* InputTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,13 +347,16 @@
 				FF9A51C022B1D4E500614084 /* LoginViewController.swift in Sources */,
 				FF57BE5E22C447DD0017F3A0 /* ReviewViewController.swift in Sources */,
 				FF2443BA22B5A47000343ED0 /* User.swift in Sources */,
+				FFC8D18622C8323D00A7B958 /* ReviewSlider.swift in Sources */,
 				FF5970AD22BAE380009E2334 /* GroupsTableViewCell.swift in Sources */,
 				FFC094B622B6C83700A3F178 /* ProfileViewController.swift in Sources */,
 				FF7C237322BFE046005A4F36 /* MainTabBarController.swift in Sources */,
 				FF5970B122BAEE94009E2334 /* ReviewType.swift in Sources */,
+				FFF2E0C822C7E3260097BE7F /* Review.swift in Sources */,
 				FF7C237722C0019A005A4F36 /* UserCollectionViewCell.swift in Sources */,
 				FFF76D0E22B0919600836BA2 /* AppDelegate.swift in Sources */,
 				FFC094B822B6C87400A3F178 /* HistoricalViewController.swift in Sources */,
+				FFC8D18822C83F3500A7B958 /* InputTextField.swift in Sources */,
 				FF7C237922C04D6A005A4F36 /* FiltersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

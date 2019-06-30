@@ -17,12 +17,23 @@ class ReviewType {
     init(reviewTypeData: [String: Any] ) {
         self.name = reviewTypeData["name"] as? String
         self.description = reviewTypeData["description"] as? String
-        if let questionsData = reviewTypeData["questions"] as? [String], var questions = self.questions as [String]? {
-            for question in questionsData {
-                questions.append(question)
-            }
+        self.questions = reviewTypeData["questions"] as? [String]
+    }
+    
+    func generateData() -> [String: Any] {
+        var simulatedJSON : [String: Any] = [:]
+        simulatedJSON["name"] = self.name!
+        simulatedJSON["description"] = self.description!
+        simulatedJSON["questions"] = self.questions!
+        return simulatedJSON
+    }
+    
+    func getName() -> String {
+        if let name = self.name as String? {
+            let forDocName = name.replacingOccurrences(of: " ", with: "")
+            return forDocName.lowercased()
         } else {
-            self.questions = []
+            return ""
         }
     }
 }

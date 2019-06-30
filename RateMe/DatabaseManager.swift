@@ -68,6 +68,20 @@ class DatabaseManager {
         } 
     }
     
+    func addReview(review: Review, onCompletion: @escaping (Bool?, Error?) -> Void) {
+        let reviewData = review.generateData()
+        let reviewsRef = db.collection("reviews")
+        reviewsRef.document().setData(reviewData) { err in
+            if let err = err {
+                print("Error en la escritura")
+                onCompletion(nil, err)
+            } else {
+                print("Escritura exitosa")
+                onCompletion(true, nil)
+            }
+        }
+    }
+    
     func getGroups(onCompletion: @escaping ([Group]?, Error?) -> Void) {
         let groupsRef = db.collection("groups")
         var groups : [Group] = []
