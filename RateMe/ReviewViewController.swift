@@ -124,7 +124,12 @@ class ReviewViewController: UIViewController {
                     print("No se subió la review.")
                 } else {
                     if result! {
-                        print("Teóricamente se subió")
+                        let alert = UIAlertController(title: "Successful review.", message: "Your review has been created.", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                            self.navigationController?.popViewController(animated: true)
+                        })
+                        alert.addAction(action)
+                        self.present(alert, animated: true, completion: nil)
                     } else {
                         print("Teóricamente no.")
                     }
