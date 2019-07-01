@@ -82,6 +82,48 @@ class DatabaseManager {
         }
     }
     
+    func getAverageFromReviews(onCompletion: @escaping (Double?, Error?) -> Void) {
+        let userReference = AuthenticationManager.shared.loggedUser?.getName()
+        let reviewsRef = db.collection("reviews")
+        reviewsRef.whereField("toUser", isEqualTo: userReference!)
+            .getDocuments { (reviewsDocs, err) in
+                if let err = err {
+                    onCompletion(nil, err)
+                } else {
+                    if reviewsDocs!.documents.count == 0 {
+                        onCompletion(0.0, nil)
+                    } else {
+                        var acum = 0.0
+                        for reviewDoc in reviewsDocs!.documents {
+                            let data = reviewDoc.data()
+                            let scoresData = data["scores"] as? [Double]
+                            let averageFromReview = self.getAverageFromReviewScores(scores: scoresData!)
+                            acum += averageFromReview
+                        }
+                        let finalResult = acum / Double(reviewsDocs!.documents.count)
+                        onCompletion(finalResult, nil)
+                    }
+                }
+        }
+    }
+    
+    func getReviewsOfUser(onCompletion: @escaping (Int?, Error?) -> Void) {
+        let userReference = AuthenticationManager.shared.loggedUser?.getName()
+        let reviewsRef = db.collection("reviews")
+        reviewsRef.whereField("toUser", isEqualTo: userReference!)
+            .getDocuments { (reviewsDocs, err) in
+                if let err = err {
+                    onCompletion(nil, err)
+                } else {
+                    if reviewsDocs!.documents.count == 0 {
+                        onCompletion(0, nil)
+                    } else {
+                        onCompletion(reviewsDocs!.documents.count, nil)
+                    }
+                }
+        }
+    }
+    
     func getGroups(onCompletion: @escaping ([Group]?, Error?) -> Void) {
         let groupsRef = db.collection("groups")
         var groups : [Group] = []
@@ -134,6 +176,11 @@ class DatabaseManager {
                         if let groupParticipants = group.participants as [User]? {
                             for participant in groupParticipants {
                                 if let email = participant.email as String?, let loggedEmail = AuthenticationManager.shared.loggedUser?.email as String? {
+                                    print("---")
+                                    print(email)
+                                    print("vs")
+                                    print(loggedEmail)
+                                    print("---")
                                     if email == loggedEmail {
                                         groupsOfUser.append(group)
                                         break
@@ -176,6 +223,14 @@ class DatabaseManager {
                 onCompletionUsers(users, nil)
             }
         })
+    }
+    
+    private func getAverageFromReviewScores(scores: [Double]) -> Double {
+        var acum = 0.0
+        for score in scores {
+            acum += score
+        }
+        return acum / 5.0 // Always five scores
     }
     
 }

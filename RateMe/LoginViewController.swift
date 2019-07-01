@@ -25,11 +25,13 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if AuthenticationManager.shared.isLoggedIn() {
+            print("esta logueado")
             DatabaseManager.shared.getUser { (loggedUser, error) in
                 if let _ = error {
                     AuthenticationManager.shared.loggedUser = nil
                 } else {
                     if let loggedUser = loggedUser as User? {
+                        print("logged user es \(loggedUser.email!)" )
                         AuthenticationManager.shared.loggedUser = loggedUser
                         self.performSegue(withIdentifier: "MainSegue1", sender: self)
                     }

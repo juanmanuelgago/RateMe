@@ -41,13 +41,16 @@ class DashboardViewController: UIViewController {
         super.viewWillAppear(true)
         self.users = []
         if let groups = groups as [Group]? {
+            print("algo ya hay en los grupos")
             fillUserData(groups: groups)
             userCollectionView.reloadData()
         } else {
+            print("teóricamente no hay nada")
             DatabaseManager.shared.getGroupsOfUser { (groupsOfUser, error) in
                 if let _ = error {
                     self.showAlert(title: "Unexpected error", message: "Try again later.")
                 } else {
+                    print("teóricamente obtuve data")
                     if let groupsOfUser = groupsOfUser as [Group]? {
                         self.groups = groupsOfUser
                         self.fillUserData(groups: groupsOfUser)

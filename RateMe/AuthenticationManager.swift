@@ -41,6 +41,7 @@ class AuthenticationManager {
     func logout(onCompletion: @escaping (Bool?, Error?) -> Void) {
         do {
             try Auth.auth().signOut()
+            loggedUser = nil
             onCompletion(true, nil)
         } catch let errorLogout {
             onCompletion(nil, errorLogout)

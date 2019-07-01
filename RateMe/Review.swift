@@ -43,7 +43,8 @@ class Review {
         for score in scores {
             counter += score
         }
-        return counter / Double(scores.count)
+        let result = counter / Double(scores.count)
+        return round(result * 10 / 10)
     }
     
     func generateData() -> [String: Any] {
@@ -56,5 +57,6 @@ class Review {
         simulatedJSON["reviewType"] = self.reviewType.getName()
         return simulatedJSON
     }
+
     
 }

@@ -27,20 +27,23 @@ class GroupsViewController: UIViewController {
         getGroups()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let mainTabViewController = segue.destination as! MainTabBarController
+        let dashboardNavController = mainTabViewController.viewControllers![0] as! MainNavigationController
+        let dashboardViewController = dashboardNavController.topViewController as! DashboardViewController
+        dashboardViewController.groups = self.selectedGroups
+    }
+    
     func getGroups() {
-        startActivityIndicator()
         DatabaseManager.shared.getGroups { (groupList, error) in
             if let error = error {
                 print("Error al traer los grupos. Intente luego más tarde.")
                 print(error)
                 print("")
-                self.stopActivityIndicator()
             } else {
                 if let groupList = groupList as [Group]? {
-                    print("Obtuve los grupos!")
                     self.groups = groupList
                     self.groupsTableView.reloadData()
-                    self.stopActivityIndicator()
                 }
             }
         }
