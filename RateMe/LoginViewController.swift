@@ -68,6 +68,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didPressLogin(_ sender: Any) {
+        self.view.endEditing(true)
         guard let email = emailTextField.text else {
             showAlert(title: "Login error", message: "Please, fill the requested fields to proceed.")
             return
