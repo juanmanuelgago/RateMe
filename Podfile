@@ -9,5 +9,8 @@ target 'RateMe' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  pod 'Kingfisher'
 
 end

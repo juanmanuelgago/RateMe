@@ -13,11 +13,35 @@ class DatabaseManager {
     
     static var shared = DatabaseManager()
     var db: Firestore!
+    private let bucketURL = "gs://rate-me-485a8.appspot.com/"
     
     private init() {
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
+    }
+    
+    func uploadUserPhoto(image: UIImage, user: User, onCompletion: @escaping (URL?) -> Void) {
+        let storageRefName = user.getName()
+        let storageRef = Storage.storage(url: bucketURL).reference().child("user/\(storageRefName)")
+        guard let imageData = UIImageJPEGRepresentation(image, 0.75) else { return onCompletion(nil) }
+        let metaData = StorageMetadata()
+        metaData.contentType = "img/jpeg"
+        storageRef.putData(imageData, metadata: metaData) { (metaDataResponse, error) in
+            if let _ = error {
+                onCompletion(nil)
+            } else {
+                if let _ = metaDataResponse as StorageMetadata? {
+                    storageRef.downloadURL(completion: { (url, error) in
+                        if let _ = error {
+                            onCompletion(nil)
+                        } else {
+                            onCompletion(url)
+                        }
+                    })
+                }
+            }
+        }
     }
     
     func createUser(user: User, onCompletion: @escaping (Bool?, Error?) -> Void) {
@@ -176,11 +200,6 @@ class DatabaseManager {
                         if let groupParticipants = group.participants as [User]? {
                             for participant in groupParticipants {
                                 if let email = participant.email as String?, let loggedEmail = AuthenticationManager.shared.loggedUser?.email as String? {
-                                    print("---")
-                                    print(email)
-                                    print("vs")
-                                    print(loggedEmail)
-                                    print("---")
                                     if email == loggedEmail {
                                         groupsOfUser.append(group)
                                         break

@@ -26,7 +26,7 @@ class Review {
         }
         self.reviewType = reviewType
         self.isAnonymous = isAnonymous
-        self.scores = [5.0, 5.0, 5.0, 5.0, 5.0]
+        self.scores = [5.5, 5.5, 5.5, 5.5, 5.5]
         self.comments = ""
     }
     

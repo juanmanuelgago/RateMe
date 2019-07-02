@@ -14,12 +14,14 @@ class User {
     let gender: String?
     let age: Int?
     let email: String?
+    var photoUrl: String?
     
-    init(fullName: String?, gender: String?, age: Int?, email: String?) {
+    init(fullName: String?, gender: String?, age: Int?, email: String?, photoUrl: String?) {
         self.fullName = fullName
         self.gender = gender
         self.age = age
         self.email = email
+        self.photoUrl = photoUrl
     }
     
     init(userData: [String: Any]) {
@@ -27,6 +29,7 @@ class User {
         self.gender = userData["gender"] as? String
         self.age = userData["age"] as? Int
         self.email = userData["email"] as? String
+        self.photoUrl = userData["photoUrl"] as? String
      }
     
     func getName() -> String {
@@ -44,6 +47,9 @@ class User {
         simulatedJSON["age"] = self.age!
         simulatedJSON["email"] = self.email!
         simulatedJSON["gender"] = self.gender!
+        if let photoUrl = self.photoUrl as String? {
+            simulatedJSON["photoUrl"] = photoUrl
+        }
         return simulatedJSON
     }
     

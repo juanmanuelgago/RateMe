@@ -30,19 +30,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Almost there" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwO-5D-Blj">
-                                <rect key="frame" x="30" y="50" width="315" height="35"/>
+                                <rect key="frame" x="30" y="50" width="315" height="36"/>
                                 <fontDescription key="fontDescription" name="Rubik-Bold" family="Rubik" pointSize="30"/>
                                 <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join a group to start evaluating!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noq-FY-tpI">
-                                <rect key="frame" x="30" y="95" width="315" height="18"/>
+                                <rect key="frame" x="30" y="96" width="315" height="18"/>
                                 <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hdi-fU-LrM">
-                                <rect key="frame" x="0.0" y="128" width="375" height="424"/>
+                                <rect key="frame" x="0.0" y="129" width="375" height="423"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GroupCell" rowHeight="119" id="wEL-cl-cNJ" customClass="GroupsTableViewCell" customModule="RateMe" customModuleProvider="target">
@@ -153,29 +153,29 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="780"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcR-KH-1v8" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="654"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="635"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqm-dg-ZOG">
-                                                <rect key="frame" x="30" y="30" width="315" height="35"/>
+                                                <rect key="frame" x="30" y="30" width="315" height="36"/>
                                                 <fontDescription key="fontDescription" name="Rubik-Bold" family="Rubik" pointSize="30"/>
                                                 <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete the requested fields to continue." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSp-n6-PGX">
-                                                <rect key="frame" x="30" y="75" width="315" height="19"/>
+                                                <rect key="frame" x="30" y="76" width="315" height="19"/>
                                                 <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="16"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="nqm-ng-gHL">
-                                                <rect key="frame" x="137.5" y="109" width="100" height="100"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="nqm-ng-gHL">
+                                                <rect key="frame" x="137.5" y="110" width="100" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="9ST-gK-t48"/>
                                                     <constraint firstAttribute="height" constant="100" id="rRo-T8-a5k"/>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pbb-U1-e8N" customClass="CustomInputTextField" customModule="RateMe" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="224" width="315" height="50"/>
+                                                <rect key="frame" x="30" y="225" width="315" height="50"/>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="17"/>
@@ -185,7 +185,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="11f-Me-S9o" customClass="CustomInputTextField" customModule="RateMe" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="354" width="315" height="50"/>
+                                                <rect key="frame" x="30" y="355" width="315" height="50"/>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="17"/>
@@ -195,7 +195,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QO2-Iu-XnR" customClass="CustomInputTextField" customModule="RateMe" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="419" width="315" height="50"/>
+                                                <rect key="frame" x="30" y="420" width="315" height="50"/>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="17"/>
@@ -205,7 +205,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Repeated password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="61r-83-NKz" customClass="CustomInputTextField" customModule="RateMe" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="484" width="315" height="50"/>
+                                                <rect key="frame" x="30" y="485" width="315" height="50"/>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="17"/>
@@ -215,7 +215,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2id-VE-4tn" customClass="CustomInputTextField" customModule="RateMe" customModuleProvider="target">
-                                                <rect key="frame" x="285" y="289" width="60" height="50"/>
+                                                <rect key="frame" x="285" y="290" width="60" height="50"/>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="jZX-3B-gEL"/>
@@ -228,14 +228,14 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ac6-um-yKC" customClass="CustomInputTextField" customModule="RateMe" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="289" width="240" height="50"/>
+                                                <rect key="frame" x="30" y="290" width="240" height="50"/>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hf0-CK-03Z">
-                                                <rect key="frame" x="30" y="554" width="315" height="50"/>
+                                                <rect key="frame" x="30" y="575" width="315" height="50"/>
                                                 <color key="backgroundColor" red="0.090196078430000007" green="0.69803921570000005" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Nas-Ex-iGY"/>
@@ -269,7 +269,7 @@
                                             <constraint firstItem="OSp-n6-PGX" firstAttribute="top" secondItem="Pqm-dg-ZOG" secondAttribute="bottom" constant="10" id="RCa-GZ-DCf"/>
                                             <constraint firstItem="hf0-CK-03Z" firstAttribute="leading" secondItem="Pbb-U1-e8N" secondAttribute="leading" id="TuP-e0-EOU"/>
                                             <constraint firstItem="Pbb-U1-e8N" firstAttribute="trailing" secondItem="OSp-n6-PGX" secondAttribute="trailing" id="UAO-Z2-ZYj"/>
-                                            <constraint firstAttribute="bottom" secondItem="hf0-CK-03Z" secondAttribute="bottom" constant="50" id="WL5-hm-Uki"/>
+                                            <constraint firstAttribute="bottom" secondItem="hf0-CK-03Z" secondAttribute="bottom" constant="10" id="WL5-hm-Uki"/>
                                             <constraint firstItem="Pbb-U1-e8N" firstAttribute="height" secondItem="hf0-CK-03Z" secondAttribute="height" id="XjT-p9-dCS"/>
                                             <constraint firstItem="Pqm-dg-ZOG" firstAttribute="top" secondItem="VcR-KH-1v8" secondAttribute="top" constant="30" id="ZCm-Vx-dRu"/>
                                             <constraint firstItem="Ac6-um-yKC" firstAttribute="top" secondItem="Pbb-U1-e8N" secondAttribute="bottom" constant="15" id="bgW-65-Z4Y"/>
@@ -281,7 +281,7 @@
                                             <constraint firstItem="61r-83-NKz" firstAttribute="top" secondItem="QO2-Iu-XnR" secondAttribute="bottom" constant="15" id="mcT-V5-uN4"/>
                                             <constraint firstItem="11f-Me-S9o" firstAttribute="trailing" secondItem="Pbb-U1-e8N" secondAttribute="trailing" id="mrp-z7-RX8"/>
                                             <constraint firstItem="hf0-CK-03Z" firstAttribute="trailing" secondItem="Pbb-U1-e8N" secondAttribute="trailing" id="nTM-Ps-zqp"/>
-                                            <constraint firstItem="hf0-CK-03Z" firstAttribute="top" secondItem="61r-83-NKz" secondAttribute="bottom" constant="20" id="udl-TB-qtT"/>
+                                            <constraint firstItem="hf0-CK-03Z" firstAttribute="top" secondItem="61r-83-NKz" secondAttribute="bottom" constant="40" id="udl-TB-qtT"/>
                                             <constraint firstItem="Pqm-dg-ZOG" firstAttribute="leading" secondItem="VcR-KH-1v8" secondAttribute="leading" constant="30" id="vVh-G0-iID"/>
                                             <constraint firstItem="61r-83-NKz" firstAttribute="leading" secondItem="Pbb-U1-e8N" secondAttribute="leading" id="x7Y-B0-eO3"/>
                                             <constraint firstItem="OSp-n6-PGX" firstAttribute="trailing" secondItem="Pqm-dg-ZOG" secondAttribute="trailing" id="yhq-qq-SpH"/>
@@ -981,7 +981,7 @@
                                                 <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="DJt-0c-cf2" customClass="ReviewSlider" customModule="RateMe" customModuleProvider="target">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5.5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="DJt-0c-cf2" customClass="ReviewSlider" customModule="RateMe" customModuleProvider="target">
                                                 <rect key="frame" x="28" y="231.5" width="269.5" height="31"/>
                                                 <connections>
                                                     <action selector="didChangeSlider:" destination="VlN-42-nzW" eventType="valueChanged" id="Tar-zB-UuV"/>
@@ -999,7 +999,7 @@
                                                 <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="OWL-vr-AgT" customClass="ReviewSlider" customModule="RateMe" customModuleProvider="target">
+                                            <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5.5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="OWL-vr-AgT" customClass="ReviewSlider" customModule="RateMe" customModuleProvider="target">
                                                 <rect key="frame" x="28" y="312.5" width="269.5" height="31"/>
                                                 <connections>
                                                     <action selector="didChangeSlider:" destination="VlN-42-nzW" eventType="valueChanged" id="S4l-tL-OgS"/>
@@ -1017,7 +1017,7 @@
                                                 <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="fvx-Gu-d0p" customClass="ReviewSlider" customModule="RateMe" customModuleProvider="target">
+                                            <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5.5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="fvx-Gu-d0p" customClass="ReviewSlider" customModule="RateMe" customModuleProvider="target">
                                                 <rect key="frame" x="28" y="393.5" width="269.5" height="31"/>
                                                 <connections>
                                                     <action selector="didChangeSlider:" destination="VlN-42-nzW" eventType="valueChanged" id="Ml0-KX-TeX"/>
@@ -1035,7 +1035,7 @@
                                                 <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="0It-zZ-AaB" customClass="ReviewSlider" customModule="RateMe" customModuleProvider="target">
+                                            <slider opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5.5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="0It-zZ-AaB" customClass="ReviewSlider" customModule="RateMe" customModuleProvider="target">
                                                 <rect key="frame" x="28" y="474.5" width="269.5" height="31"/>
                                                 <connections>
                                                     <action selector="didChangeSlider:" destination="VlN-42-nzW" eventType="valueChanged" id="tWb-HW-dXk"/>
@@ -1053,7 +1053,7 @@
                                                 <color key="textColor" red="0.039215686270000001" green="0.1333333333" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yvk-wq-Ge2" customClass="ReviewSlider" customModule="RateMe" customModuleProvider="target">
+                                            <slider opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5.5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yvk-wq-Ge2" customClass="ReviewSlider" customModule="RateMe" customModuleProvider="target">
                                                 <rect key="frame" x="28" y="555.5" width="269.5" height="31"/>
                                                 <connections>
                                                     <action selector="didChangeSlider:" destination="VlN-42-nzW" eventType="valueChanged" id="r6I-N2-znG"/>

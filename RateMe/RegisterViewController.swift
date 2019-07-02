@@ -23,6 +23,8 @@ class RegisterViewController: UIViewController {
     
     var activityIndicator = UIActivityIndicatorView()
     var picker = UIPickerView()
+    var imagePicker: UIImagePickerController!
+    var imageChanged = false
     let genderOptions = ["Male", "Female"]
     
     override func viewDidLoad() {
@@ -30,10 +32,21 @@ class RegisterViewController: UIViewController {
         applyCornerRadius()
         applyRoundedImage()
         assignPickerToTextField()
+        addImageTap()
+    }
+    
+    func addImageTap() {
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
+        profilePhotoImage.isUserInteractionEnabled = true
+        profilePhotoImage.addGestureRecognizer(imageTap)
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
     }
     
     func applyRoundedImage() {
-        profilePhotoImage.layer.masksToBounds = false
+        profilePhotoImage.layer.masksToBounds = true
         profilePhotoImage.layer.cornerRadius = profilePhotoImage.frame.height / 2
         profilePhotoImage.clipsToBounds = true
     }
@@ -76,20 +89,42 @@ class RegisterViewController: UIViewController {
         genderTextField.inputView = picker
     }
     
+    @objc func openImagePicker(_ sender: Any) {
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
     @IBAction func didPressRegister(_ sender: Any) {
         // TODO: Validation of textfields values.
         if let name = fullNameTextField.text as String?, let age = ageTextField.text as String?, let email = emailTextField.text as String?, let password = passwordTextField.text as String?, let repeatedPassword = passwordTextField.text as String?, let gender = genderTextField.text as String? {
             if (password == repeatedPassword) {
                 startActivityIndicator()
-                let newUser = User(fullName: name, gender: gender, age: Int(age)!, email: email)
+                let newUser = User(fullName: name, gender: gender, age: Int(age)!, email: email, photoUrl: nil)
                 AuthenticationManager.shared.createUser(user: newUser, password: password) { (response, error) in
                     if let _ = error as Error? {
                         self.showAlert(title: "Register error", message: "Unable to create user. Please, try again later.")
                         self.stopActivityIndicator()
                     } else {
-                        DatabaseManager.shared.createUser(user: newUser) { (response, error) in
-                            AuthenticationManager.shared.loggedUser = newUser
-                            self.performSegue(withIdentifier: "GroupSegue", sender: self)
+                        if self.imageChanged {
+                            DatabaseManager.shared.uploadUserPhoto(image: self.profilePhotoImage.image!, user: newUser, onCompletion: { (photoURL) in
+                                if photoURL != nil {
+                                    let photoUrlString = photoURL?.absoluteString
+                                    newUser.photoUrl = photoUrlString
+                                    DatabaseManager.shared.createUser(user: newUser) { (response, error) in
+                                        AuthenticationManager.shared.loggedUser = newUser
+                                        self.performSegue(withIdentifier: "GroupSegue", sender: self)
+                                    }
+                                } else {
+                                    DatabaseManager.shared.createUser(user: newUser) { (response, error) in
+                                        AuthenticationManager.shared.loggedUser = newUser
+                                        self.performSegue(withIdentifier: "GroupSegue", sender: self)
+                                    }
+                                }
+                            })
+                        } else {
+                            DatabaseManager.shared.createUser(user: newUser) { (response, error) in
+                                AuthenticationManager.shared.loggedUser = newUser
+                                self.performSegue(withIdentifier: "GroupSegue", sender: self)
+                            }
                         }
                     }
                 }
@@ -136,6 +171,21 @@ extension RegisterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return genderOptions[row]
+    }
+}
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage? {
+            self.profilePhotoImage.image = pickedImage
+            imageChanged = true
+            
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
 }
 

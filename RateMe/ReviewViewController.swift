@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ReviewViewController: UIViewController {
 
@@ -54,6 +55,10 @@ class ReviewViewController: UIViewController {
     func applyCornerRadius() {
         finishButton.layer.cornerRadius = 8
         commentsTextView.layer.cornerRadius = 8
+        userImage.layer.masksToBounds = true
+        userImage.layer.cornerRadius = userImage.frame.height / 2
+        userImage.clipsToBounds = true
+        
     }
     
     func initializeReviewData() {
@@ -62,6 +67,9 @@ class ReviewViewController: UIViewController {
             userNameLabel.text = newReview.userTo.fullName
             userAgeLabel.text = String(newReview.userTo.age!) + " years"
             userGenderLabel.text = newReview.userTo.gender
+            if let photoUrl = newReview.userTo.photoUrl as String? {
+                userImage.kf.setImage(with: URL(string: photoUrl))
+            }
             
             // Assign the questions and the description to their labels.
             reviewDescriptionLabel.text = newReview.reviewType.description

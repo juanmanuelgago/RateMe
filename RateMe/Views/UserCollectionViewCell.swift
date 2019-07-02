@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol UserReviewDelegate {
     func didRequestToReview(cell: UICollectionViewCell)
@@ -31,6 +32,10 @@ class UserCollectionViewCell: UICollectionViewCell {
     
     func applyCornerRadius() {
         reviewButton.layer.cornerRadius = 8
+        photoImage.layer.masksToBounds = true
+        photoImage.layer.cornerRadius = photoImage.frame.height / 2
+        photoImage.clipsToBounds = true
+        
     }
     
     func styleCardView() {
@@ -47,6 +52,11 @@ class UserCollectionViewCell: UICollectionViewCell {
             nameLabel.text = fullName
             ageLabel.text = "Age: " + String(age)
             genderLabel.text = "Gender: " + gender
+        }
+        if let photoUrl = user.photoUrl as String? {
+            photoImage.kf.setImage(with: URL(string: photoUrl))
+        } else {
+            photoImage.image = UIImage(named: "avatar")
         }
     }
     

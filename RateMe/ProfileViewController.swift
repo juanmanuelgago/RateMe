@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProfileViewController: UIViewController {
     
@@ -83,11 +84,17 @@ class ProfileViewController: UIViewController {
         userAgeLabel.text = String(user!.age!)
         userGenderLabel.text = user?.gender!
         userEmailLabel.text = user?.email!
+        if let photoUrl = user?.photoUrl as String? {
+            userImageView.kf.setImage(with: URL(string: photoUrl))
+        }
     }
     
     func applyCornerRadius() {
         logOutButton.layer.cornerRadius = 8
         cardView.layer.cornerRadius = 8
+        userImageView.layer.masksToBounds = true
+        userImageView.layer.cornerRadius = userImageView.frame.height / 2
+        userImageView.clipsToBounds = true
     }
     
     func applyCardStyle() {
