@@ -924,9 +924,11 @@
                         <outlet property="userNameLabel" destination="TY2-7H-HL1" id="W92-yf-rw1"/>
                         <outlet property="userReviewsLabel" destination="97y-Tx-560" id="0rm-yk-334"/>
                         <outlet property="userScoreLabel" destination="wnT-e6-bzk" id="64C-na-vFp"/>
+                        <segue destination="co3-Dr-zqP" kind="unwind" identifier="unwindToLogin" unwindAction="prepareForUnwindWithSegue:" id="Wlc-2t-mzn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ph-B6-Txl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="co3-Dr-zqP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3255" y="1957"/>
         </scene>
@@ -1298,7 +1300,7 @@
         <!--Profile-->
         <scene sceneID="mwh-hy-uHo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KbR-oZ-Zjb" customClass="MainNavigationController" customModule="RateMe" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KbR-oZ-Zjb" customClass="ProfileNavigationController" customModule="RateMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" id="wzP-Wf-QbE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="WpJ-XD-VAm">

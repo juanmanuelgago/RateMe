@@ -181,14 +181,23 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func didPressLogOut(_ sender: Any) {
+        startActivityIndicator()
         AuthenticationManager.shared.logout { (result, error) in
             if let _ = error {
+                self.stopActivityIndicator()
                 print("No me pude desloguear.")
             } else {
                 if let result = result as Bool? {
                     if result {
-                        
+                        self.stopActivityIndicator()
+                        let alertLogOut = UIAlertController(title: "Bye!", message: "You've finished your session correctly.", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            self.performSegue(withIdentifier: "unwindToLogin", sender: self)
+                        })
+                        alertLogOut.addAction(okAction)
+                        self.present(alertLogOut, animated: true, completion: nil)
                     } else {
+                        self.stopActivityIndicator()
                         print("No me pude desloguear")
                     }
                 }

@@ -96,6 +96,8 @@ class LoginViewController: UIViewController {
                                 if let user = user as User? {
                                     self.stopActivityIndicator()
                                     AuthenticationManager.shared.loggedUser = user
+                                    self.emailTextField.text = ""
+                                    self.passwordTextField.text = ""
                                     self.performSegue(withIdentifier: "MainSegue1", sender: self)
                                 }
                             }
@@ -110,6 +112,10 @@ class LoginViewController: UIViewController {
             showAlert(title: "Login error", message: "Please, fill the requested fields to proceed.")
             self.passwordTextField.text = ""
         }
+    }
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+        
     }
     
     @IBAction func didPressSignUp(_ sender: Any) {
