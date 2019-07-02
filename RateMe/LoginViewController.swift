@@ -67,6 +67,11 @@ class LoginViewController: UIViewController {
         }
     }
     
+    func isValidEmail(email: String) -> Bool {
+        let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: email)
+    }
+    
     @IBAction func didPressLogin(_ sender: Any) {
         guard let email = emailTextField.text else {
             showAlert(title: "Login error", message: "Please, fill the requested fields to proceed.")
@@ -76,33 +81,39 @@ class LoginViewController: UIViewController {
             showAlert(title: "Login error", message: "Please, fill the requested fields to proceed.")
             return
         }
-
+        
         if email != "" && password != "" {
-            startActivityIndicator()
-            AuthenticationManager.shared.login(email: email, password: password) { (loginResponse, error) in
-                if let _ = error as Error? {
-                    self.stopActivityIndicator()
-                    self.showAlert(title: "Login error", message: "Invalid credentials.")
-                    self.passwordTextField.text = ""
-                } else {
-                    DatabaseManager.shared.getUser(onCompletion: { (user, error) in
-                        if let _ = error {
-                            self.stopActivityIndicator()
-                            self.showAlert(title: "Login error", message: "There's been an error processing the information. Please, try again later.")
-                            self.passwordTextField.text = ""
-                            
-                        } else {
-                            if let user = user as User? {
+            if isValidEmail(email: email) {
+                startActivityIndicator()
+                AuthenticationManager.shared.login(email: email, password: password) { (loginResponse, error) in
+                    if let _ = error as Error? {
+                        self.stopActivityIndicator()
+                        self.showAlert(title: "Login error", message: "Invalid credentials.")
+                        self.passwordTextField.text = ""
+                    } else {
+                        DatabaseManager.shared.getUser(onCompletion: { (user, error) in
+                            if let _ = error {
                                 self.stopActivityIndicator()
-                                AuthenticationManager.shared.loggedUser = user
-                                self.performSegue(withIdentifier: "MainSegue1", sender: self)
+                                self.showAlert(title: "Login error", message: "There's been an error processing the information. Please, try again later.")
+                                self.passwordTextField.text = ""
+                                
+                            } else {
+                                if let user = user as User? {
+                                    self.stopActivityIndicator()
+                                    AuthenticationManager.shared.loggedUser = user
+                                    self.performSegue(withIdentifier: "MainSegue1", sender: self)
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
                 }
+            } else {
+                showAlert(title: "Login error", message: "Your email is invalid. Change it.")
+                self.passwordTextField.text = ""
             }
         } else {
             showAlert(title: "Login error", message: "Please, fill the requested fields to proceed.")
+            self.passwordTextField.text = ""
         }
     }
     
