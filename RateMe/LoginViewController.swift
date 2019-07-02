@@ -68,22 +68,34 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didPressLogin(_ sender: Any) {
-        if let email = emailTextField.text as String?, let password = passwordTextField.text as String? {
+        guard let email = emailTextField.text else {
+            showAlert(title: "Login error", message: "Please, fill the requested fields to proceed.")
+            return
+        }
+        guard let password = passwordTextField.text else {
+            showAlert(title: "Login error", message: "Please, fill the requested fields to proceed.")
+            return
+        }
+
+        if email != "" && password != "" {
             startActivityIndicator()
             AuthenticationManager.shared.login(email: email, password: password) { (loginResponse, error) in
                 if let _ = error as Error? {
-                    self.showAlert(title: "Login error", message: "Invalid credentials.")
                     self.stopActivityIndicator()
+                    self.showAlert(title: "Login error", message: "Invalid credentials.")
+                    self.passwordTextField.text = ""
                 } else {
                     DatabaseManager.shared.getUser(onCompletion: { (user, error) in
-                        if let error = error {
+                        if let _ = error {
                             self.stopActivityIndicator()
                             self.showAlert(title: "Login error", message: "There's been an error processing the information. Please, try again later.")
+                            self.passwordTextField.text = ""
+                            
                         } else {
                             if let user = user as User? {
+                                self.stopActivityIndicator()
                                 AuthenticationManager.shared.loggedUser = user
                                 self.performSegue(withIdentifier: "MainSegue1", sender: self)
-                                self.stopActivityIndicator()
                             }
                         }
                     })
