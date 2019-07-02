@@ -76,8 +76,22 @@ class FiltersViewController: UIViewController {
             var fromAgeVar: Int?
             var toAgeVar: Int?
             if gender != "" { genderVar = gender }
-            if fromAge != "" { fromAgeVar = Int(fromAge) }
-            if toAge != "" { toAgeVar = Int(toAge) }
+            if fromAge != "" {
+                if Validator.isValidAge(age: fromAge) {
+                    fromAgeVar = Int(fromAge)
+                } else {
+                    showAlert(title: "Filters error", message: "First age value is invalid. Must be between 18 and 100.")
+                    return
+                }
+            }
+            if toAge != "" {
+                if Validator.isValidAge(age: toAge) {
+                    toAgeVar = Int(toAge)
+                } else {
+                    showAlert(title: "Filters error", message: "Second age value is invalid. Must be between 18 and 100.")
+                    return
+                }
+            }
             filterDelegate?.setFilters(gender: genderVar, fromAge: fromAgeVar, toAge: toAgeVar)
         }
         dismiss(animated: true, completion: nil)
