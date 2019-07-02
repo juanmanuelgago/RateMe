@@ -34,25 +34,32 @@ class DashboardViewController: UIViewController {
     // Filter for the custom filters
     var filtersFlag = false
     
+    var activityIndicator = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        startActivityIndicator()
         self.users = []
         if let groups = groups as [Group]? {
             fillUserData(groups: groups)
             userCollectionView.reloadData()
+            stopActivityIndicator()
         } else {
             DatabaseManager.shared.getGroupsOfUser { (groupsOfUser, error) in
                 if let _ = error {
+                    self.stopActivityIndicator()
                     self.showAlert(title: "Unexpected error", message: "Try again later.")
+                    
                 } else {
                     if let groupsOfUser = groupsOfUser as [Group]? {
                         self.groups = groupsOfUser
                         self.fillUserData(groups: groupsOfUser)
                         self.userCollectionView.reloadData()
+                        self.stopActivityIndicator()
                     }
                 }
             }
@@ -80,7 +87,27 @@ class DashboardViewController: UIViewController {
                 reviewViewController.newReview = Review(userTo: selectedUser, reviewType: selectedReviewType, isAnonymous: true)
             }
         }
-        
+    }
+    
+    func startActivityIndicator() {
+        let newView = UIView(frame: UIScreen.main.bounds)
+        newView.tag = 101 // Random tag, for the process of dismissing the view.
+        newView.backgroundColor = .white
+        newView.alpha = 0.5
+        self.view.addSubview(newView)
+        newView.addSubview(activityIndicator)
+        activityIndicator.center = newView.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        activityIndicator.startAnimating()
+    }
+    
+    // Stop the loader activity.
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        if let viewTag = self.view.viewWithTag(101) {
+            viewTag.removeFromSuperview()
+        }
     }
     
     func fillUserData(groups: [Group]) {
@@ -93,15 +120,6 @@ class DashboardViewController: UIViewController {
                 }
             }
         }
-//        for user in users {
-//            print("user.name \(user.fullName!)")
-//            if let url = user.photoUrl as String? {
-//                print("user.photourl \(url)")
-//            } else {
-//                print ("user.photourl nulo")
-//            }
-//            print("----")
-//        }
     }
     
     func checkIfExists(userToCheck: User) -> Bool {

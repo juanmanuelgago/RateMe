@@ -35,16 +35,16 @@ class GroupsViewController: UIViewController {
     }
     
     func getGroups() {
+        startActivityIndicator()
         DatabaseManager.shared.getGroups { (groupList, error) in
-            if let error = error {
-                print("Error al traer los grupos. Intente luego más tarde.")
-                print(error)
-                print("")
+            if let _ = error {
+                self.stopActivityIndicator()
             } else {
                 if let groupList = groupList as [Group]? {
                     self.groups = groupList
                     self.groupsTableView.reloadData()
                 }
+                self.stopActivityIndicator()
             }
         }
     }
@@ -77,28 +77,27 @@ class GroupsViewController: UIViewController {
     @IBAction func didPressJoin(_ sender: Any) {
         startActivityIndicator()
         if selectedGroups.count == 0 {
-            showAlert(title: "Groups error", message: "At least, you have to be joined to one group.")
             stopActivityIndicator()
+            showAlert(title: "Groups error", message: "At least, you have to be joined to one group.")
         } else {
             var counting = 1
             for selectedGroup in selectedGroups {
                 DatabaseManager.shared.addUserToGroup(group: selectedGroup) { (addingResult, error) in
-                    if let error = error {
-                        print(error)
-                        self.showAlert(title: "Unexpected error", message: "There's a problem in the process.")
+                    if let _ = error {
                         self.stopActivityIndicator()
+                        self.showAlert(title: "Unexpected error", message: "There's a problem in the process.")
                     } else {
                         if let result = addingResult as Bool? {
                             if result {
                                 if counting == self.selectedGroups.count {
+                                    self.stopActivityIndicator()
                                     self.performSegue(withIdentifier: "MainSegue2", sender: self)
                                 } else {
                                     counting += 1
                                 }
                             } else {
-                                print("No se añadió el grupo \(selectedGroup.id)")
-                                self.showAlert(title: "Unexpected error", message: "There's a problem in the process.")
                                 self.stopActivityIndicator()
+                                self.showAlert(title: "Unexpected error", message: "There's a problem in the process. Please, try again later.")
                             }
                         }
                     }
@@ -107,14 +106,6 @@ class GroupsViewController: UIViewController {
         }
     }
 
-}
-
-extension UIViewController {
-    func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true, completion: nil)
-    }
 }
 
 extension GroupsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -156,6 +147,15 @@ extension GroupsViewController: UITableViewDelegate, UITableViewDataSource {
                 break
             }
         }
+    }
+}
+
+
+extension UIViewController {
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
