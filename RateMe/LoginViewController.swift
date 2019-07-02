@@ -67,11 +67,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func isValidEmail(email: String) -> Bool {
-        let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
-        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: email)
-    }
-    
     @IBAction func didPressLogin(_ sender: Any) {
         guard let email = emailTextField.text else {
             showAlert(title: "Login error", message: "Please, fill the requested fields to proceed.")
@@ -83,7 +78,7 @@ class LoginViewController: UIViewController {
         }
         
         if email != "" && password != "" {
-            if isValidEmail(email: email) {
+            if Validator.isValidEmail(email: email) {
                 startActivityIndicator()
                 AuthenticationManager.shared.login(email: email, password: password) { (loginResponse, error) in
                     if let _ = error as Error? {

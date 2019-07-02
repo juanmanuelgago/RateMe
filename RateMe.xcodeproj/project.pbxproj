@@ -29,6 +29,7 @@
 		FFC094B422B6BF4300A3F178 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC094B322B6BF4300A3F178 /* GroupsViewController.swift */; };
 		FFC094B622B6C83700A3F178 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC094B522B6C83700A3F178 /* ProfileViewController.swift */; };
 		FFC094B822B6C87400A3F178 /* HistoricalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC094B722B6C87400A3F178 /* HistoricalViewController.swift */; };
+		FFC5EBFA22CB166000B44C33 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC5EBF922CB166000B44C33 /* Validator.swift */; };
 		FFC8D18622C8323D00A7B958 /* ReviewSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8D18522C8323D00A7B958 /* ReviewSlider.swift */; };
 		FFC8D18822C83F3500A7B958 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8D18722C83F3500A7B958 /* InputTextField.swift */; };
 		FFF2E0C822C7E3260097BE7F /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2E0C722C7E3260097BE7F /* Review.swift */; };
@@ -63,6 +64,7 @@
 		FFC094B322B6BF4300A3F178 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		FFC094B522B6C83700A3F178 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FFC094B722B6C87400A3F178 /* HistoricalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalViewController.swift; sourceTree = "<group>"; };
+		FFC5EBF922CB166000B44C33 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		FFC8D18522C8323D00A7B958 /* ReviewSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSlider.swift; sourceTree = "<group>"; };
 		FFC8D18722C83F3500A7B958 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		FFF2E0C722C7E3260097BE7F /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				FF5970AE22BAEE4F009E2334 /* Group.swift */,
 				FF5970B022BAEE94009E2334 /* ReviewType.swift */,
 				FFF2E0C722C7E3260097BE7F /* Review.swift */,
+				FFC5EBF922CB166000B44C33 /* Validator.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				FF7C237322BFE046005A4F36 /* MainTabBarController.swift in Sources */,
 				FF5970B122BAEE94009E2334 /* ReviewType.swift in Sources */,
 				FFF2E0C822C7E3260097BE7F /* Review.swift in Sources */,
+				FFC5EBFA22CB166000B44C33 /* Validator.swift in Sources */,
 				FF7C237722C0019A005A4F36 /* UserCollectionViewCell.swift in Sources */,
 				FFF76D0E22B0919600836BA2 /* AppDelegate.swift in Sources */,
 				FFC094B822B6C87400A3F178 /* HistoricalViewController.swift in Sources */,

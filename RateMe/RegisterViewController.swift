@@ -94,45 +94,73 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func didPressRegister(_ sender: Any) {
-        // TODO: Validation of textfields values.
-        if let name = fullNameTextField.text as String?, let age = ageTextField.text as String?, let email = emailTextField.text as String?, let password = passwordTextField.text as String?, let repeatedPassword = passwordTextField.text as String?, let gender = genderTextField.text as String? {
+        guard let email = emailTextField.text, let age = ageTextField.text, let name = fullNameTextField.text, let password = passwordTextField.text, let repeatedPassword = passwordTextField.text, let gender = genderTextField.text else {
+            showAlert(title: "Register error", message: "Please, fill all the requested fields on the form.")
+            return
+        }
+        
+        if name != "" && age != "" && email != "" && password != "" && repeatedPassword != "" && gender != "" {
             if (password == repeatedPassword) {
-                startActivityIndicator()
-                let newUser = User(fullName: name, gender: gender, age: Int(age)!, email: email, photoUrl: nil)
-                AuthenticationManager.shared.createUser(user: newUser, password: password) { (response, error) in
-                    if let _ = error as Error? {
-                        self.showAlert(title: "Register error", message: "Unable to create user. Please, try again later.")
-                        self.stopActivityIndicator()
-                    } else {
-                        if self.imageChanged {
-                            DatabaseManager.shared.uploadUserPhoto(image: self.profilePhotoImage.image!, user: newUser, onCompletion: { (photoURL) in
-                                if photoURL != nil {
-                                    let photoUrlString = photoURL?.absoluteString
-                                    newUser.photoUrl = photoUrlString
-                                    DatabaseManager.shared.createUser(user: newUser) { (response, error) in
-                                        AuthenticationManager.shared.loggedUser = newUser
-                                        self.performSegue(withIdentifier: "GroupSegue", sender: self)
-                                    }
+                if Validator.isValidEmail(email: email) {
+                    if Validator.isValidAge(age: age) {
+                        if Validator.isValidName(name: name) {
+                            startActivityIndicator()
+                            let newUser = User(fullName: name, gender: gender, age: Int(age)!, email: email, photoUrl: nil)
+                            AuthenticationManager.shared.createUser(user: newUser, password: password) { (response, error) in
+                                if let _ = error as Error? {
+                                    self.showAlert(title: "Register error", message: "Unable to create user. Please, try again later.")
+                                    self.stopActivityIndicator()
                                 } else {
-                                    DatabaseManager.shared.createUser(user: newUser) { (response, error) in
-                                        AuthenticationManager.shared.loggedUser = newUser
-                                        self.performSegue(withIdentifier: "GroupSegue", sender: self)
+                                    if self.imageChanged {
+                                        DatabaseManager.shared.uploadUserPhoto(image: self.profilePhotoImage.image!, user: newUser, onCompletion: { (photoURL) in
+                                            if photoURL != nil {
+                                                let photoUrlString = photoURL?.absoluteString
+                                                newUser.photoUrl = photoUrlString
+                                                DatabaseManager.shared.createUser(user: newUser) { (response, error) in
+                                                    self.stopActivityIndicator()
+                                                    AuthenticationManager.shared.loggedUser = newUser
+                                                    self.performSegue(withIdentifier: "GroupSegue", sender: self)
+                                                }
+                                            } else {
+                                                DatabaseManager.shared.createUser(user: newUser) { (response, error) in
+                                                    self.stopActivityIndicator()
+                                                    AuthenticationManager.shared.loggedUser = newUser
+                                                    self.performSegue(withIdentifier: "GroupSegue", sender: self)
+                                                }
+                                            }
+                                        })
+                                    } else {
+                                        DatabaseManager.shared.createUser(user: newUser) { (response, error) in
+                                            self.stopActivityIndicator()
+                                            AuthenticationManager.shared.loggedUser = newUser
+                                            self.performSegue(withIdentifier: "GroupSegue", sender: self)
+                                        }
                                     }
                                 }
-                            })
-                        } else {
-                            DatabaseManager.shared.createUser(user: newUser) { (response, error) in
-                                AuthenticationManager.shared.loggedUser = newUser
-                                self.performSegue(withIdentifier: "GroupSegue", sender: self)
                             }
+                        } else {
+                            showAlert(title: "Register error", message: "Your name is invalid. Only letters from the alphabet.")
+                            self.passwordTextField.text = ""
+                            self.repeatedPasswordTextField.text = ""
                         }
+                    } else {
+                        showAlert(title: "Register error", message: "Invalid age. You must be older than 18 and younger than 100.")
+                        self.passwordTextField.text = ""
+                        self.repeatedPasswordTextField.text = ""
                     }
+                } else {
+                    showAlert(title: "Register error", message: "Your email is invalid. Change it.")
+                    self.passwordTextField.text = ""
+                    self.repeatedPasswordTextField.text = ""
                 }
+                
             } else {
                 showAlert(title: "Register error", message: "Passwords don't match. Try again.")
             }
         } else {
             showAlert(title: "Register error", message: "Please, fill all the requested fields on the form.")
+            self.passwordTextField.text = ""
+            self.repeatedPasswordTextField.text = ""
         }
     }
 
