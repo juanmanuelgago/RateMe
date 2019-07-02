@@ -28,6 +28,8 @@ class ProfileViewController: UIViewController {
     var user: User?
     var reviews: [Review]?
     
+    var activityIndicator = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         applyCornerRadius()
@@ -36,7 +38,9 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         if let loggedUser = AuthenticationManager.shared.loggedUser as User? {
+            startActivityIndicator()
             user = loggedUser
             assignUserScore()
             assignReviewsQuantity()
@@ -44,17 +48,41 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    func startActivityIndicator() {
+        let newView = UIView(frame: UIScreen.main.bounds)
+        newView.tag = 101 // Random tag, for the process of dismissing the view.
+        newView.backgroundColor = .white
+        newView.alpha = 1
+        self.view.addSubview(newView)
+        newView.addSubview(activityIndicator)
+        activityIndicator.center = newView.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        activityIndicator.startAnimating()
+    }
+    
+    // Stop the loader activity.
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        if let viewTag = self.view.viewWithTag(101) {
+            viewTag.removeFromSuperview()
+        }
+    }
+    
     func assignUserScore() {
         DatabaseManager.shared
             .getAverageFromReviews { (averageResult, err) in
                 if let _ = err {
+                    self.stopActivityIndicator()
                     self.userScoreLabel.text = "?"
                 } else {
                     if let result = averageResult as Double? {
+                        self.stopActivityIndicator()
                         let resultWithOneDecimal = round(result * 10) / 10
                         self.userScoreLabel.text = String(resultWithOneDecimal)
                         self.styleCircleProgressBar(score: resultWithOneDecimal)
                     }
+                    
                 }
         }
     }
@@ -106,6 +134,7 @@ class ProfileViewController: UIViewController {
     }
     
     func styleCircleProgressBar(score: Double) {
+        
         let shapeLayer = CAShapeLayer()
         let trackLayer = CAShapeLayer()
         
@@ -115,10 +144,11 @@ class ProfileViewController: UIViewController {
         
         //For the shape behind the progress bar, used as the track path for the bar.
         trackLayer.path = circularPath.cgPath
-        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.strokeColor = UIColor.white.cgColor
         trackLayer.fillColor = UIColor.white.cgColor
-        trackLayer.lineWidth = 3
         trackLayer.lineCap = kCALineCapRound
+        trackLayer.lineWidth = 5
+        
         
         // For the shape of the progress bar over the track layer.
         shapeLayer.path = circularPath.cgPath
@@ -133,7 +163,7 @@ class ProfileViewController: UIViewController {
             userScoreLabel.textColor = UIColor.init(red: 0.0/255, green: 179.0/255, blue: 60.0/255, alpha: 1.0)
         }
         shapeLayer.fillColor = UIColor.white.cgColor
-        shapeLayer.lineWidth = 7.5
+        shapeLayer.lineWidth = 5
         shapeLayer.lineCap = kCALineCapRound
         shapeLayer.strokeEnd = 0
         
