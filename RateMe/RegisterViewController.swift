@@ -20,6 +20,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatedPasswordTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     var activityIndicator = UIActivityIndicatorView()
     var picker = UIPickerView()
@@ -91,6 +92,10 @@ class RegisterViewController: UIViewController {
     
     @objc func openImagePicker(_ sender: Any) {
         self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func didPressBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func didPressRegister(_ sender: Any) {
