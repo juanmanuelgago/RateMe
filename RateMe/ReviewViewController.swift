@@ -33,6 +33,11 @@ class ReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         applyCornerRadius()
+        
+        //Listen to Keyboard events.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +55,12 @@ class ReviewViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         self.tabBarController?.tabBar.isHidden = false // Prepare the tabs not to be hidden.
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
     func applyCornerRadius() {
@@ -103,6 +114,14 @@ class ReviewViewController: UIViewController {
         } else {
             labelToChange.textColor = UIColor.init(red: 0.0/255, green: 179.0/255, blue: 60.0/255, alpha: 1.0) //Green
         }
+    }
+    
+    @objc func keyboardWillAppear(notification: Notification) {
+        scrollView.frame.origin.y = -200
+    }
+    
+    @objc func keyboardWillDisappear(notification: Notification) {
+        scrollView.frame.origin.y = 0
     }
     
     @IBAction func didChangeSlider(_ sender: UISlider) {
