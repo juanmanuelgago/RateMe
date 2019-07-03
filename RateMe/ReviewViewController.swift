@@ -37,7 +37,6 @@ class ReviewViewController: UIViewController {
         //Listen to Keyboard events.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +59,6 @@ class ReviewViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
     func applyCornerRadius() {
@@ -69,7 +67,6 @@ class ReviewViewController: UIViewController {
         userImage.layer.masksToBounds = true
         userImage.layer.cornerRadius = userImage.frame.height / 2
         userImage.clipsToBounds = true
-        
     }
     
     func initializeReviewData() {
